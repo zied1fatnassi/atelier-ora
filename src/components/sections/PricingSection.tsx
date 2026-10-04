@@ -1,12 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { Locale } from "@/i18n/config";
 import { Dictionary } from "@/i18n/get-dictionary";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Button } from "../ui/Button";
-import { Check, ArrowUpRight, Calculator, Plus, Minus } from "lucide-react";
+import { Check, ArrowUpRight, Calculator, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface PricingSectionProps {

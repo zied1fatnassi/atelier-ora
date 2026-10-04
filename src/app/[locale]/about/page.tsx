@@ -1,11 +1,9 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
-import { Locale, isValidLocale } from "@/i18n/config";
+import { isValidLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { Button } from "@/components/ui/Button";
-import { Badge } from "@/components/ui/Badge";
-import { ArrowUpRight, Compass, Shield, Zap, Sparkles, MapPin } from "lucide-react";
+import { ArrowUpRight, MapPin } from "lucide-react";
 
 interface AboutPageProps {
   params: Promise<{ locale: string }>;

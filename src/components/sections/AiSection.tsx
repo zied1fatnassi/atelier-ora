@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Dictionary } from "@/i18n/get-dictionary";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Badge } from "../ui/Badge";
-import { Sparkles, ArrowRight, Zap, RefreshCw } from "lucide-react";
+import { Sparkles, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface AiSectionProps {

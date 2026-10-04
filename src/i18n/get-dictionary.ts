@@ -1,4 +1,4 @@
-import { Locale, DEFAULT_LOCALE, isValidLocale } from "./config";
+import { DEFAULT_LOCALE, isValidLocale } from "./config";
 import { fr } from "./messages/fr";
 import { en } from "./messages/en";
 import { ar } from "./messages/ar";

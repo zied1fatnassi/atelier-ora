@@ -1,11 +1,11 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { Locale, isValidLocale } from "@/i18n/config";
+import { isValidLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { ArrowUpRight, Camera, Film, Layers } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 interface WorkPageProps {
   params: Promise<{ locale: string }>;

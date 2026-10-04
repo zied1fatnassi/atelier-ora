@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 import { Locale, isValidLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { PricingSection } from "@/components/sections/PricingSection";
-import { Badge } from "@/components/ui/Badge";
 import { HelpCircle } from "lucide-react";
 
 interface PricingPageProps {

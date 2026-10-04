@@ -3,16 +3,13 @@
 import { useState, useEffect } from "react";
 import { Locale } from "@/i18n/config";
 import { Dictionary } from "@/i18n/get-dictionary";
-import { Button } from "../ui/Button";
 import {
   Check,
   ArrowRight,
   ArrowLeft,
   Send,
   MessageCircle,
-  Building,
   CheckCircle2,
-  Sparkles,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

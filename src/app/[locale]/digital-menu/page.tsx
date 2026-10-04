@@ -4,16 +4,7 @@ import { getDictionary } from "@/i18n/get-dictionary";
 import { DigitalMenuPreviewSection } from "@/components/sections/DigitalMenuPreviewSection";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
-import {
-  QrCode,
-  Smartphone,
-  MessageCircle,
-  Zap,
-  Globe,
-  CheckCircle,
-  ArrowUpRight,
-  TrendingUp,
-} from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 interface DigitalMenuPageProps {
   params: Promise<{ locale: string }>;

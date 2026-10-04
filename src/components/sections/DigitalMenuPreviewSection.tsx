@@ -9,9 +9,7 @@ import { SectionHeading } from "../ui/SectionHeading";
 import { Button } from "../ui/Button";
 import {
   QrCode,
-  Globe,
   MessageCircle,
-  Sparkles,
   Check,
   Plus,
   ArrowUpRight,

@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { Locale, isValidLocale } from "@/i18n/config";
+import { isValidLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 
 interface TermsPageProps {

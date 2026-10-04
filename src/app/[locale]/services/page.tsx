@@ -1,10 +1,9 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { Locale, isValidLocale } from "@/i18n/config";
+import { isValidLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { Button } from "@/components/ui/Button";
-import { Badge } from "@/components/ui/Badge";
-import { ArrowUpRight, Globe, Film, Camera, Smartphone, Sparkles, Layers, Check } from "lucide-react";
+import { ArrowUpRight, Globe, Film, Camera, Smartphone, Sparkles, Layers } from "lucide-react";
 
 interface ServicesPageProps {
   params: Promise<{ locale: string }>;

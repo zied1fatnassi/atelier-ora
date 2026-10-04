@@ -1,11 +1,10 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
-import { Locale, isValidLocale } from "@/i18n/config";
+import { isValidLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
-import { Camera, Film, Sliders, Volume2, ArrowUpRight, CheckCircle2, Play } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 interface ProductionPageProps {
   params: Promise<{ locale: string }>;

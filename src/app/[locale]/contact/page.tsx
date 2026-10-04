@@ -3,7 +3,7 @@ import { Locale, isValidLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { GuidedProjectForm } from "@/components/sections/GuidedProjectForm";
 import { Badge } from "@/components/ui/Badge";
-import { MessageCircle, Mail, Phone, MapPin, Clock, ArrowUpRight } from "lucide-react";
+import { MessageCircle, Mail, MapPin } from "lucide-react";
 
 interface ContactPageProps {
   params: Promise<{ locale: string }>;
