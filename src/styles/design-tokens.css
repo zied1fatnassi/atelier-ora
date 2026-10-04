@@ -1,0 +1,54 @@
+:root {
+  /* Surface colors */
+  --bg-canvas: #060608;
+  --bg-surface: #0d0d12;
+  --bg-surface-elevated: #14141c;
+  --bg-surface-active: #1c1c26;
+  --bg-glass: rgba(14, 14, 20, 0.72);
+  --bg-glass-hover: rgba(24, 24, 34, 0.85);
+
+  /* Border tokens */
+  --border-hairline: rgba(255, 255, 255, 0.05);
+  --border-subtle: rgba(255, 255, 255, 0.09);
+  --border-medium: rgba(255, 255, 255, 0.16);
+  --border-highlight: rgba(255, 255, 255, 0.28);
+  --border-accent: rgba(245, 158, 11, 0.45);
+
+  /* Text hierarchy */
+  --text-primary: #f8f8fa;
+  --text-secondary: #a0a0ab;
+  --text-tertiary: #60606c;
+  --text-accent: #f59e0b;
+
+  /* Brand Accents */
+  --brand-amber: #f59e0b;
+  --brand-amber-hover: #d97706;
+  --brand-amber-light: #fbbf24;
+  --brand-amber-glow: rgba(245, 158, 11, 0.18);
+  --brand-cine-red: #ef4444;
+  --brand-cine-glow: rgba(239, 68, 68, 0.25);
+
+  /* Radius */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-xl: 22px;
+  --radius-full: 9999px;
+
+  /* Easing curves */
+  --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-cinematic: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Light mode overrides if ever toggled, but studio aesthetic is unapologetically dark & cinematic */
+[data-theme="light"] {
+  --bg-canvas: #f8f8f6;
+  --bg-surface: #efeee8;
+  --bg-surface-elevated: #e6e5dd;
+  --border-hairline: rgba(0, 0, 0, 0.06);
+  --border-subtle: rgba(0, 0, 0, 0.12);
+  --text-primary: #121214;
+  --text-secondary: #585862;
+  --text-tertiary: #8f8f9c;
+}
