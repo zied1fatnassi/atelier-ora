@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { isValidLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
+import { siteConfig } from "@/config/site";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { ArrowUpRight } from "lucide-react";
@@ -18,6 +19,8 @@ export default async function ProductionPage({ params }: ProductionPageProps) {
   }
 
   const dict = getDictionary(locale);
+  const isArabic = locale === "ar";
+  const isFrench = locale === "fr";
 
   return (
     <div className="py-32 px-4 md:px-8 bg-[#060608] min-h-screen text-white">
@@ -49,7 +52,7 @@ export default async function ProductionPage({ params }: ProductionPageProps) {
         <div className="relative aspect-[16/9] w-full rounded-3xl overflow-hidden bg-neutral-900 border border-white/10 shadow-2xl">
           <Image
             src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=2000&q=85"
-            alt="Atelier Ora Cinema Production Rig"
+            alt={`${siteConfig.name} Commercial Cinema Production Rig`}
             fill
             priority
             sizes="100vw"
@@ -70,10 +73,14 @@ export default async function ProductionPage({ params }: ProductionPageProps) {
             <div className="flex items-center justify-between">
               <div className="space-y-1">
                 <span className="text-xs font-mono text-amber-400 uppercase tracking-widest block">
-                  COMMERCIAL REEL 2026
+                  {siteConfig.name} CINEMA REEL
                 </span>
                 <span className="text-xl sm:text-2xl font-display font-bold text-white">
-                  Étalonnage &amp; Direction de la Photographie
+                  {isArabic
+                    ? "معالجة ألوان سينمائية وتوجيه فني"
+                    : isFrench
+                    ? "Étalonnage & Direction de la Photographie"
+                    : "Cinema Color Grading & Cinematography"}
                 </span>
               </div>
 
@@ -84,7 +91,7 @@ export default async function ProductionPage({ params }: ProductionPageProps) {
                   size="md"
                   icon={<ArrowUpRight className="w-4 h-4" />}
                 >
-                  Réserver un tournage
+                  {dict.common.startProject}
                 </Button>
               </div>
             </div>
@@ -95,10 +102,10 @@ export default async function ProductionPage({ params }: ProductionPageProps) {
         <div className="space-y-10">
           <div className="border-b border-white/10 pb-4">
             <span className="text-xs font-mono text-amber-500 uppercase tracking-widest">
-              NOTRE FLUX DE TRAVAIL ÉPROUVÉ
+              {isArabic ? "مسار الإنتاج الميداني" : isFrench ? "NOTRE FLUX DE TRAVAIL" : "PRODUCTION SEQUENCE"}
             </span>
             <h2 className="text-3xl font-display font-bold text-white mt-1">
-              De la première prise au premier million de vues.
+              {dict.production.workflowTitle}
             </h2>
           </div>
 
@@ -126,7 +133,7 @@ export default async function ProductionPage({ params }: ProductionPageProps) {
         <div className="space-y-10">
           <div className="border-b border-white/10 pb-4">
             <span className="text-xs font-mono text-amber-500 uppercase tracking-widest">
-              ARSENAL MATÉRIEL &amp; LAB
+              {isArabic ? "المعدات والتقنيات" : isFrench ? "ARSENAL MATÉRIEL & LAB" : "EQUIPMENT & COLOR LAB"}
             </span>
             <h2 className="text-3xl font-display font-bold text-white mt-1">
               {dict.production.gearTitle}
@@ -143,7 +150,7 @@ export default async function ProductionPage({ params }: ProductionPageProps) {
                   <span className="px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono text-xs uppercase">
                     {gear.badge}
                   </span>
-                  <span className="font-mono text-xs text-white/30">4K D-LOG</span>
+                  <span className="font-mono text-xs text-white/30">4K D-LOG M</span>
                 </div>
                 <h3 className="text-2xl font-display font-bold text-white">
                   {gear.title}
@@ -164,7 +171,7 @@ export default async function ProductionPage({ params }: ProductionPageProps) {
             size="lg"
             icon={<ArrowUpRight className="w-4 h-4" />}
           >
-            Planifier une journée de tournage dans votre établissement
+            {dict.common.startProject}
           </Button>
         </div>
       </div>

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { isValidLocale, SUPPORTED_LOCALES } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
+import { siteConfig } from "@/config/site";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import {
@@ -39,6 +40,9 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
   if (!project) {
     notFound();
   }
+
+  const isArabic = locale === "ar";
+  const isFrench = locale === "fr";
 
   return (
     <article className="py-28 px-4 md:px-8 bg-[#060608] min-h-screen text-white">
@@ -116,7 +120,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
               size="sm"
               icon={<ArrowUpRight className="w-3.5 h-3.5" />}
             >
-              Commander un projet similaire
+              {dict.common.startProject}
             </Button>
           </div>
         </div>
@@ -125,10 +129,10 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 py-8 border-y border-white/10">
           <div className="space-y-4">
             <span className="text-xs font-mono text-amber-500 uppercase tracking-widest block">
-              01. LE DÉFI COMMERCIAL &amp; CRÉATIF
+              {isArabic ? "01. التحدي التجاري والإبداعي" : isFrench ? "01. LE DÉFI COMMERCIAL & CRÉATIF" : "01. THE CREATIVE CHALLENGE"}
             </span>
             <h2 className="text-2xl sm:text-3xl font-display font-semibold text-white">
-              Rompre avec l&apos;ordinaire.
+              {isArabic ? "كسر النمطية المعتادة." : isFrench ? "Rompre avec l'ordinaire." : "Transcend category clichés."}
             </h2>
             <p className="text-sm sm:text-base text-[#a0a0ab] leading-relaxed font-light">
               {project.challenge}
@@ -137,10 +141,10 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
 
           <div className="space-y-4">
             <span className="text-xs font-mono text-amber-500 uppercase tracking-widest block">
-              02. LA STRATÉGIE ATELIER ORA
+              {isArabic ? `02. استراتيجية ${siteConfig.name}` : isFrench ? `02. LA STRATÉGIE ${siteConfig.name}` : `02. THE ${siteConfig.name} STRATEGY`}
             </span>
             <h2 className="text-2xl sm:text-3xl font-display font-semibold text-white">
-              Une direction esthétique radicale.
+              {isArabic ? "توجيه بصري وهندسي متكامل." : isFrench ? "Une direction esthétique radicale." : "Holistic visual & software execution."}
             </h2>
             <p className="text-sm sm:text-base text-[#a0a0ab] leading-relaxed font-light">
               {project.solution}
@@ -152,10 +156,10 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
         <div className="space-y-6">
           <div className="flex items-center justify-between">
             <h3 className="font-display font-semibold text-2xl text-white">
-              Galerie de Production &amp; Étalonnage
+              {isArabic ? "معرض الإنتاج والتصوير" : isFrench ? "Galerie de Production & Étalonnage" : "Production & Grading Gallery"}
             </h3>
             <span className="text-xs font-mono text-[#a0a0ab]">
-              SHOOT SUR SITE EN CONDITIONS RÉELLES
+              4K CINEMA MASTERING
             </span>
           </div>
 
@@ -177,13 +181,13 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
           </div>
         </div>
 
-        {/* Concrete Measurable Results */}
+        {/* Results */}
         <div className="p-8 sm:p-12 rounded-3xl bg-[#111119] border border-white/10 space-y-6">
           <span className="text-xs font-mono text-amber-500 uppercase tracking-widest block">
-            03. RÉSULTATS TANGIBLES
+            {isArabic ? "03. المخرجات والنتائج" : isFrench ? "03. RÉSULTATS TANGIBLES" : "03. MEASURABLE OUTCOMES"}
           </span>
           <h3 className="text-3xl font-display font-bold text-white">
-            L&apos;impact concret mesuré après déploiement.
+            {isArabic ? "الأثر الملموس بعد الإطلاق." : isFrench ? "L'impact concret mesuré après déploiement." : "Tangible impact measured after deployment."}
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4">
             {project.results.map((res, rIdx) => (
@@ -202,10 +206,14 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
         <div className="p-8 rounded-3xl bg-gradient-to-r from-amber-500/10 via-[#14141e] to-transparent border border-amber-500/30 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
             <h3 className="text-2xl font-display font-bold text-white">
-              Votre établissement a le même potentiel.
+              {isArabic ? "علامتك التجارية تستحق نفس التميز." : isFrench ? "Votre établissement a le même potentiel." : "Your brand deserves the same caliber."}
             </h3>
             <p className="text-xs text-[#a0a0ab] mt-1">
-              Concevons ensemble la présence digitale d&apos;exception qui fera votre renommée.
+              {isArabic
+                ? "لنصنع معاً حضوراً رقمياً يليق بجودة ما تقدمه."
+                : isFrench
+                ? "Concevons ensemble la présence digitale d'exception qui fera votre renommée."
+                : "Let's build a digital presence that matches the quality of what you offer."}
             </p>
           </div>
           <Button

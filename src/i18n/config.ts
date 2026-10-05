@@ -1,11 +1,11 @@
-export const SUPPORTED_LOCALES = ['fr', 'en', 'ar'] as const;
+export const SUPPORTED_LOCALES = ['en', 'fr', 'ar'] as const;
 export type Locale = (typeof SUPPORTED_LOCALES)[number];
 
-export const DEFAULT_LOCALE: Locale = 'fr';
+export const DEFAULT_LOCALE: Locale = 'en';
 
 export const LOCALE_LABELS: Record<Locale, { label: string; code: string; dir: 'ltr' | 'rtl' }> = {
-  fr: { label: 'Français', code: 'FR', dir: 'ltr' },
   en: { label: 'English', code: 'EN', dir: 'ltr' },
+  fr: { label: 'Français', code: 'FR', dir: 'ltr' },
   ar: { label: 'العربية', code: 'AR', dir: 'rtl' },
 };
 

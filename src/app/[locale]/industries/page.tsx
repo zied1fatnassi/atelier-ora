@@ -17,6 +17,8 @@ export default async function IndustriesPage({ params }: IndustriesPageProps) {
   }
 
   const dict = getDictionary(locale);
+  const isArabic = locale === "ar";
+  const isFrench = locale === "fr";
 
   const imagesMap: Record<string, string> = {
     coffee: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1200&q=80",
@@ -24,7 +26,7 @@ export default async function IndustriesPage({ params }: IndustriesPageProps) {
     fitness: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80",
     hotels: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
     retail: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=80",
-    beauty: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80",
+    corporate: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
   };
 
   return (
@@ -76,7 +78,7 @@ export default async function IndustriesPage({ params }: IndustriesPageProps) {
                   </h3>
                   <div className="text-xs text-[#a0a0ab] leading-relaxed p-3.5 rounded-xl bg-white/[0.02] border border-white/5">
                     <span className="font-mono text-amber-400 uppercase tracking-wider block mb-1">
-                      NOTRE PACK SPÉCIFIQUE :
+                      {isArabic ? "مخرجات هذا القطاع :" : isFrench ? "LIVRABLES SPÉCIFIQUES :" : "SECTOR DELIVERABLES:"}
                     </span>
                     {ind.deliverables}
                   </div>
@@ -87,7 +89,9 @@ export default async function IndustriesPage({ params }: IndustriesPageProps) {
                     href={`/${locale}/contact?industry=${ind.id}`}
                     className="text-xs font-mono tracking-wider uppercase text-amber-400 hover:text-amber-300 font-semibold inline-flex items-center gap-1"
                   >
-                    <span>Démarrer dans ce secteur</span>
+                    <span>
+                      {isArabic ? "ابدأ في هذا القطاع" : isFrench ? "Démarrer dans ce secteur" : "Launch in this sector"}
+                    </span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>

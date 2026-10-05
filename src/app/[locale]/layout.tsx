@@ -9,6 +9,8 @@ import { CustomCursor } from "@/components/ui/CustomCursor";
 import { CookieConsent } from "@/components/ui/CookieConsent";
 import "../globals.css";
 
+import { siteConfig } from "@/config/site";
+
 export async function generateStaticParams() {
   return SUPPORTED_LOCALES.map((locale) => ({ locale }));
 }
@@ -26,47 +28,45 @@ export async function generateMetadata({
   const { locale } = await params;
   const dict = getDictionary(locale);
 
-  const title = `${dict.common.studioName} — ${dict.common.studioTagline}`;
-  const description = dict.hero.subhead;
+  const title = dict.common.studioName 
+    ? `${dict.common.studioName} — ${dict.common.studioTagline}`
+    : siteConfig.seo.defaultTitle;
+  const description = dict.hero?.subhead || siteConfig.seo.defaultDescription;
 
   return {
     title: {
       default: title,
-      template: `%s | ${dict.common.studioName}`,
+      template: `%s | ${siteConfig.name}`,
     },
     description,
-    keywords: [
-      "creative digital studio tunis",
-      "agence web tunisie",
-      "production video 4k tunis",
-      "menu digital qr code restaurant tunis",
-      "creation site web café restaurant tunisie",
-      "studio design d'auteur",
-      "dji osmo pocket production",
-      "davinci resolve color grading",
-    ],
-    authors: [{ name: "Atelier Ora Studio" }],
-    creator: "Atelier Ora Studio",
-    metadataBase: new URL("https://atelierora.studio"),
+    keywords: [...siteConfig.seo.keywords],
+    authors: [{ name: siteConfig.name }],
+    creator: siteConfig.name,
+    metadataBase: new URL(siteConfig.url),
     alternates: {
       canonical: `/${locale}`,
       languages: {
-        fr: "/fr",
         en: "/en",
+        fr: "/fr",
         ar: "/ar",
       },
+    },
+    icons: {
+      icon: "/icon.svg",
+      shortcut: "/icon.svg",
+      apple: "/icon.svg",
     },
     openGraph: {
       title,
       description,
-      url: `https://atelierora.studio/${locale}`,
-      siteName: "Atelier Ora Studio",
+      url: `${siteConfig.url}/${locale}`,
+      siteName: siteConfig.name,
       images: [
         {
           url: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80",
           width: 1200,
           height: 630,
-          alt: "Atelier Ora Studio",
+          alt: `${siteConfig.name} Studio`,
         },
       ],
       locale: locale === "ar" ? "ar_TN" : locale === "en" ? "en_US" : "fr_FR",
@@ -92,55 +92,70 @@ export default async function LocaleLayout({
   const dict = getDictionary(locale);
   const isRtl = locale === "ar";
 
-  // Structured Data Schema for LocalBusiness and Organization
+  // Structured Data Schema for Organization and Creative Agency
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Organization",
-        "@id": "https://atelierora.studio/#organization",
-        name: "Atelier Ora Studio",
-        url: "https://atelierora.studio",
-        logo: "https://atelierora.studio/logo.png",
-        description: dict.manifesto.description,
+        "@id": `${siteConfig.url}/#organization`,
+        name: siteConfig.name,
+        legalName: siteConfig.legalName,
+        url: siteConfig.url,
+        logo: `${siteConfig.url}/icon.svg`,
+        description: siteConfig.mission,
+        email: siteConfig.emails.general,
+        telephone: siteConfig.contact.phone,
         address: {
           "@type": "PostalAddress",
-          streetAddress: "Les Berges du Lac 2 / La Marsa",
-          addressLocality: "Tunis",
+          streetAddress: siteConfig.location.address,
+          addressLocality: siteConfig.location.city,
+          postalCode: siteConfig.location.postalCode,
           addressCountry: "TN",
         },
         contactPoint: {
           "@type": "ContactPoint",
-          telephone: "+216-29-888-900",
+          telephone: siteConfig.contact.phone,
           contactType: "customer service",
-          availableLanguage: ["French", "Arabic", "English"],
+          email: siteConfig.emails.general,
+          availableLanguage: ["English", "French", "Arabic"],
         },
       },
       {
-        "@type": "LocalBusiness",
-        "@id": "https://atelierora.studio/#localbusiness",
-        name: "Atelier Ora Studio — Creative Digital & Film",
+        "@type": "ProfessionalService",
+        "@id": `${siteConfig.url}/#professionalservice`,
+        name: `${siteConfig.name} — Creative Digital Agency & Commercial Film`,
         image:
           "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80",
-        telephone: "+21629888900",
-        priceRange: "1490 TND - 6000 TND",
+        telephone: siteConfig.contact.phone,
+        priceRange: "$$$$",
         address: {
           "@type": "PostalAddress",
-          addressLocality: "Tunis",
-          addressRegion: "Tunis",
+          streetAddress: siteConfig.location.address,
+          addressLocality: siteConfig.location.city,
+          addressRegion: siteConfig.location.region,
+          postalCode: siteConfig.location.postalCode,
           addressCountry: "TN",
         },
         geo: {
           "@type": "GeoCoordinates",
-          latitude: 36.8065,
-          longitude: 10.1815,
+          latitude: siteConfig.location.coordinates.latitude,
+          longitude: siteConfig.location.coordinates.longitude,
         },
         openingHoursSpecification: [
           {
             "@type": "OpeningHoursSpecification",
-            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-            opens: "08:30",
-            closes: "19:00",
+            dayOfWeek: [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday",
+            ],
+            opens: "00:00",
+            closes: "23:59",
           },
         ],
       },

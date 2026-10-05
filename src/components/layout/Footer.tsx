@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Locale } from "@/i18n/config";
 import { Dictionary } from "@/i18n/get-dictionary";
+import { siteConfig } from "@/config/site";
+import { AuraLogo } from "../brand/AuraLogo";
 import { ArrowUp, ArrowUpRight, MessageCircle, MapPin, Mail, Phone } from "lucide-react";
 
 interface FooterProps {
@@ -19,7 +21,7 @@ export function Footer({ locale, dict }: FooterProps) {
     setMounted(true);
     const updateTime = () => {
       const now = new Date();
-      // Tunis is UTC+1
+      // Tunisia is UTC+1
       const options: Intl.DateTimeFormatOptions = {
         timeZone: "Africa/Tunis",
         hour: "2-digit",
@@ -27,7 +29,7 @@ export function Footer({ locale, dict }: FooterProps) {
         second: "2-digit",
         hour12: false,
       };
-      setTunisTime(new Intl.DateTimeFormat("fr-TN", options).format(now));
+      setTunisTime(new Intl.DateTimeFormat("en-GB", options).format(now));
     };
 
     updateTime();
@@ -69,7 +71,7 @@ export function Footer({ locale, dict }: FooterProps) {
                 <ArrowUpRight className="w-4 h-4" />
               </Link>
               <a
-                href="https://wa.me/21629888900"
+                href={siteConfig.contact.whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/[0.04] border border-white/15 text-white hover:bg-white/10 transition-colors text-sm font-medium"
@@ -83,7 +85,7 @@ export function Footer({ locale, dict }: FooterProps) {
           <div className="lg:col-span-5 flex flex-col justify-between space-y-8 lg:text-end">
             <div className="space-y-2">
               <span className="font-mono text-xs text-[#a0a0ab] uppercase tracking-wider block">
-                LOCAL TIME IN TUNIS (GMT+1)
+                LOCAL TIME IN TUNISIA (GMT+1)
               </span>
               <div className="font-mono text-2xl md:text-3xl font-light text-white tracking-widest tabular-nums">
                 <span suppressHydrationWarning>
@@ -96,18 +98,18 @@ export function Footer({ locale, dict }: FooterProps) {
             <div className="space-y-1 text-sm text-[#a0a0ab]">
               <div className="flex items-center lg:justify-end gap-2 text-white">
                 <MapPin className="w-4 h-4 text-amber-500" />
-                <span>Les Berges du Lac 2 / La Marsa, Tunis</span>
+                <span>{siteConfig.location.address}</span>
               </div>
               <div className="flex items-center lg:justify-end gap-2">
                 <Mail className="w-4 h-4 text-white/40" />
-                <a href="mailto:contact@atelierora.studio" className="hover:text-white transition-colors">
-                  contact@atelierora.studio
+                <a href={`mailto:${siteConfig.emails.general}`} className="hover:text-white transition-colors">
+                  {siteConfig.emails.general}
                 </a>
               </div>
               <div className="flex items-center lg:justify-end gap-2">
                 <Phone className="w-4 h-4 text-white/40" />
-                <a href="tel:+21629888900" className="hover:text-white transition-colors">
-                  +216 29 888 900
+                <a href={`tel:${siteConfig.contact.phoneTel}`} className="hover:text-white transition-colors">
+                  {siteConfig.contact.phoneDisplay}
                 </a>
               </div>
             </div>
@@ -123,7 +125,7 @@ export function Footer({ locale, dict }: FooterProps) {
             <ul className="space-y-2.5">
               <li>
                 <Link href={`/${locale}/work/mirador`} className="text-white/70 hover:text-white transition-colors">
-                  Café Mirador & Roastery
+                  Mirador Specialty Coffee
                 </Link>
               </li>
               <li>
@@ -133,7 +135,7 @@ export function Footer({ locale, dict }: FooterProps) {
               </li>
               <li>
                 <Link href={`/${locale}/work/dar-el-bahr`} className="text-white/70 hover:text-white transition-colors">
-                  Dar El Bahr Gastronomie
+                  Dar El Bahr Gastronomy
                 </Link>
               </li>
               <li>
@@ -151,22 +153,22 @@ export function Footer({ locale, dict }: FooterProps) {
             <ul className="space-y-2.5">
               <li>
                 <Link href={`/${locale}/services`} className="text-white/70 hover:text-white transition-colors">
-                  Web Sur-Mesure
+                  Digital & Web Experiences
                 </Link>
               </li>
               <li>
                 <Link href={`/${locale}/production`} className="text-white/70 hover:text-white transition-colors">
-                  Production Film 4K
+                  Commercial Video & Film
                 </Link>
               </li>
               <li>
                 <Link href={`/${locale}/digital-menu`} className="text-white/70 hover:text-white transition-colors">
-                  Menu Digital PWA
+                  Interactive Digital Menu
                 </Link>
               </li>
               <li>
                 <Link href={`/${locale}/services`} className="text-white/70 hover:text-white transition-colors">
-                  Systèmes de Marque
+                  AI Creative Studio
                 </Link>
               </li>
             </ul>
@@ -184,17 +186,17 @@ export function Footer({ locale, dict }: FooterProps) {
               </li>
               <li>
                 <Link href={`/${locale}/industries`} className="text-white/70 hover:text-white transition-colors">
-                  Restaurants & Gastronomie
+                  Fine Dining & Restaurants
                 </Link>
               </li>
               <li>
                 <Link href={`/${locale}/industries`} className="text-white/70 hover:text-white transition-colors">
-                  Clubs de Fitness & Gyms
+                  Gyms & Fitness Centers
                 </Link>
               </li>
               <li>
                 <Link href={`/${locale}/industries`} className="text-white/70 hover:text-white transition-colors">
-                  Hôtels & Riads de Charme
+                  Hotels, Riads & Luxury
                 </Link>
               </li>
             </ul>
@@ -237,8 +239,9 @@ export function Footer({ locale, dict }: FooterProps) {
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#a0a0ab]">
           <div className="flex items-center gap-3">
+            <AuraLogo variant="mark" size="sm" />
             <span className="font-display font-bold text-white tracking-tight">
-              {dict.common.studioName}
+              {siteConfig.name}
             </span>
             <span>•</span>
             <span>© 2026 {dict.footer.rights}</span>
@@ -246,12 +249,12 @@ export function Footer({ locale, dict }: FooterProps) {
 
           <div className="flex items-center gap-6">
             <span className="font-mono text-[10px] tracking-widest uppercase text-white/40">
-              4K 24FPS • ZERO TEMPLATES • TUNIS
+              WEB • CONTENT • AI • ZERO TEMPLATES
             </span>
             <button
               onClick={scrollToTop}
               className="p-2 rounded-full bg-white/[0.05] border border-white/10 text-white/70 hover:text-white hover:bg-white/15 transition-all"
-              aria-label="Retourner en haut de la page"
+              aria-label="Back to top"
             >
               <ArrowUp className="w-4 h-4" />
             </button>

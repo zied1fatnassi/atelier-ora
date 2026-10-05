@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Locale } from "@/i18n/config";
 import { Dictionary } from "@/i18n/get-dictionary";
+import { siteConfig } from "@/config/site";
 import {
   Check,
   ArrowRight,
@@ -28,6 +29,7 @@ interface FormState {
   phone: string;
   email: string;
   businessName: string;
+  consent: boolean;
 }
 
 export function GuidedProjectForm({ locale, dict }: GuidedProjectFormProps) {
@@ -45,12 +47,13 @@ export function GuidedProjectForm({ locale, dict }: GuidedProjectFormProps) {
     phone: "",
     email: "",
     businessName: "",
+    consent: true,
   });
 
   // Restore partial progress from localStorage
   useEffect(() => {
     try {
-      const saved = localStorage.getItem("atelier-ora-form-progress");
+      const saved = localStorage.getItem("aura-design-form-progress");
       if (saved) {
         setFormData(JSON.parse(saved));
       }
@@ -62,7 +65,7 @@ export function GuidedProjectForm({ locale, dict }: GuidedProjectFormProps) {
   // Save partial progress
   useEffect(() => {
     try {
-      localStorage.setItem("atelier-ora-form-progress", JSON.stringify(formData));
+      localStorage.setItem("aura-design-form-progress", JSON.stringify(formData));
     } catch {
       // ignore
     }
@@ -109,10 +112,10 @@ export function GuidedProjectForm({ locale, dict }: GuidedProjectFormProps) {
 
       if (res.ok) {
         setSubmitted(true);
-        localStorage.removeItem("atelier-ora-form-progress");
+        localStorage.removeItem("aura-design-form-progress");
       }
     } catch {
-      // Fallback: still treat as submitted for testing
+      // Fallback
       setSubmitted(true);
     } finally {
       setLoading(false);
@@ -137,13 +140,13 @@ export function GuidedProjectForm({ locale, dict }: GuidedProjectFormProps) {
             {dict.contact.thankYou.whatsAppPrompt}
           </p>
           <a
-            href="https://wa.me/21629888900"
+            href={siteConfig.contact.whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-emerald-500 text-black font-semibold hover:bg-emerald-400 transition-colors text-sm shadow-md"
           >
             <MessageCircle className="w-4 h-4" />
-            <span>Échanger sur WhatsApp (+216 29 888 900)</span>
+            <span>WhatsApp ({siteConfig.contact.phoneDisplay})</span>
           </a>
         </div>
       </div>
@@ -156,9 +159,9 @@ export function GuidedProjectForm({ locale, dict }: GuidedProjectFormProps) {
       <div className="mb-8">
         <div className="flex items-center justify-between text-xs font-mono text-[#a0a0ab] mb-3">
           <span className="uppercase text-amber-400 font-bold">
-            ÉTAPE 0{currentStep} / 05
+            {locale === "ar" ? `المرحلة 0${currentStep} / 05` : `STEP 0${currentStep} / 05`}
           </span>
-          <span>{Math.round((currentStep / 5) * 100)}% COMPLÉTÉ</span>
+          <span>{Math.round((currentStep / 5) * 100)}%</span>
         </div>
         <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
           <div
@@ -205,7 +208,7 @@ export function GuidedProjectForm({ locale, dict }: GuidedProjectFormProps) {
           </div>
         )}
 
-        {/* STEP 2: Services needed */}
+        {/* STEP 2: Services */}
         {currentStep === 2 && (
           <div className="space-y-6 animate-in fade-in duration-300">
             <div>
@@ -218,13 +221,13 @@ export function GuidedProjectForm({ locale, dict }: GuidedProjectFormProps) {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {steps.step2.options.map((srv) => {
-                const isSelected = formData.services.includes(srv);
+              {steps.step2.options.map((opt) => {
+                const isSelected = formData.services.includes(opt);
                 return (
                   <button
-                    key={srv}
+                    key={opt}
                     type="button"
-                    onClick={() => handleServiceToggle(srv)}
+                    onClick={() => handleServiceToggle(opt)}
                     className={cn(
                       "p-4 rounded-2xl border text-start transition-all flex items-center justify-between",
                       isSelected
@@ -232,7 +235,7 @@ export function GuidedProjectForm({ locale, dict }: GuidedProjectFormProps) {
                         : "bg-white/[0.02] border-white/10 text-white/70 hover:border-white/20 hover:bg-white/[0.04]"
                     )}
                   >
-                    <span className="text-xs sm:text-sm">{srv}</span>
+                    <span className="text-xs sm:text-sm">{opt}</span>
                     {isSelected && <Check className="w-4 h-4 text-amber-400 shrink-0" />}
                   </button>
                 );
@@ -241,7 +244,7 @@ export function GuidedProjectForm({ locale, dict }: GuidedProjectFormProps) {
           </div>
         )}
 
-        {/* STEP 3: Budget tier */}
+        {/* STEP 3: Timeline */}
         {currentStep === 3 && (
           <div className="space-y-6 animate-in fade-in duration-300">
             <div>
@@ -253,22 +256,22 @@ export function GuidedProjectForm({ locale, dict }: GuidedProjectFormProps) {
               </p>
             </div>
 
-            <div className="space-y-3">
-              {steps.step3.options.map((bgt) => {
-                const isSelected = formData.budget === bgt;
+            <div className="grid grid-cols-1 gap-3">
+              {steps.step3.options.map((opt) => {
+                const isSelected = formData.timeline === opt;
                 return (
                   <button
-                    key={bgt}
+                    key={opt}
                     type="button"
-                    onClick={() => setFormData({ ...formData, budget: bgt })}
+                    onClick={() => setFormData({ ...formData, timeline: opt })}
                     className={cn(
-                      "w-full p-4 rounded-2xl border text-start transition-all flex items-center justify-between",
+                      "p-4 rounded-2xl border text-start transition-all flex items-center justify-between",
                       isSelected
                         ? "bg-amber-500/15 border-amber-500 text-white font-medium"
                         : "bg-white/[0.02] border-white/10 text-white/70 hover:border-white/20 hover:bg-white/[0.04]"
                     )}
                   >
-                    <span className="text-xs sm:text-sm">{bgt}</span>
+                    <span className="text-xs sm:text-sm">{opt}</span>
                     {isSelected && <Check className="w-4 h-4 text-amber-400 shrink-0" />}
                   </button>
                 );
@@ -277,7 +280,7 @@ export function GuidedProjectForm({ locale, dict }: GuidedProjectFormProps) {
           </div>
         )}
 
-        {/* STEP 4: Project details & timeline */}
+        {/* STEP 4: Project Details */}
         {currentStep === 4 && (
           <div className="space-y-6 animate-in fade-in duration-300">
             <div>
@@ -290,48 +293,18 @@ export function GuidedProjectForm({ locale, dict }: GuidedProjectFormProps) {
             </div>
 
             <div className="space-y-4">
-              <label className="block text-xs font-mono text-[#a0a0ab] uppercase">
-                DÉTAILS DU PROJET
-              </label>
               <textarea
-                rows={4}
+                rows={5}
                 value={formData.details}
                 onChange={(e) => setFormData({ ...formData, details: e.target.value })}
                 placeholder={steps.step4.placeholderDetails}
                 className="w-full p-4 rounded-2xl bg-[#0b0b10] border border-white/10 text-white text-xs sm:text-sm placeholder:text-white/30 focus:border-amber-500 focus:outline-none transition-colors"
               />
             </div>
-
-            <div className="space-y-2">
-              <label className="block text-xs font-mono text-[#a0a0ab] uppercase">
-                {steps.step4.timelineLabel}
-              </label>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                {steps.step4.timelineOptions.map((time) => {
-                  const isSelected = formData.timeline === time;
-                  return (
-                    <button
-                      key={time}
-                      type="button"
-                      onClick={() => setFormData({ ...formData, timeline: time })}
-                      className={cn(
-                        "p-3 rounded-xl border text-start text-xs transition-all flex items-center justify-between",
-                        isSelected
-                          ? "bg-amber-500/15 border-amber-500 text-white"
-                          : "bg-white/[0.02] border-white/10 text-white/60 hover:border-white/20"
-                      )}
-                    >
-                      <span>{time}</span>
-                      {isSelected && <Check className="w-3.5 h-3.5 text-amber-400" />}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
           </div>
         )}
 
-        {/* STEP 5: Contact information */}
+        {/* STEP 5: Contact Details */}
         {currentStep === 5 && (
           <div className="space-y-6 animate-in fade-in duration-300">
             <div>
@@ -401,6 +374,25 @@ export function GuidedProjectForm({ locale, dict }: GuidedProjectFormProps) {
                   className="w-full p-3.5 rounded-xl bg-[#0b0b10] border border-white/10 text-white text-xs sm:text-sm placeholder:text-white/30 focus:border-amber-500 focus:outline-none"
                 />
               </div>
+            </div>
+
+            {/* Privacy Consent Checkbox */}
+            <div className="pt-2 flex items-start gap-2.5">
+              <input
+                type="checkbox"
+                id="consent-checkbox"
+                required
+                checked={formData.consent}
+                onChange={(e) => setFormData({ ...formData, consent: e.target.checked })}
+                className="mt-1 h-4 w-4 rounded border-white/20 bg-black/40 text-amber-500 focus:ring-amber-500"
+              />
+              <label htmlFor="consent-checkbox" className="text-xs text-white/60 leading-relaxed cursor-pointer">
+                {locale === "fr"
+                  ? "J'accepte que AURA DESIGN traite mes coordonnées pour me recontacter concernant ce projet conformément à la Politique de Confidentialité."
+                  : locale === "ar"
+                  ? "أوافق على معالجة AURA DESIGN لبيانات الاتصال للرد بخصوص هذا المشروع وفقاً لسياسة الخصوصية."
+                  : "I consent to AURA DESIGN processing my contact details to reply regarding this project inquiry in accordance with the Privacy Policy."}
+              </label>
             </div>
           </div>
         )}

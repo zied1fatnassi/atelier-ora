@@ -3,7 +3,7 @@ import Link from "next/link";
 import { isValidLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { Button } from "@/components/ui/Button";
-import { ArrowUpRight, Globe, Film, Camera, Smartphone, Sparkles, Layers } from "lucide-react";
+import { ArrowUpRight, Globe, Film, Smartphone, Sparkles, Layers } from "lucide-react";
 
 interface ServicesPageProps {
   params: Promise<{ locale: string }>;
@@ -17,14 +17,15 @@ export default async function ServicesPage({ params }: ServicesPageProps) {
   }
 
   const dict = getDictionary(locale);
+  const isArabic = locale === "ar";
+  const isFrench = locale === "fr";
 
   const iconMap: Record<string, React.ReactNode> = {
-    "web-experience": <Globe className="w-8 h-8 text-amber-500" />,
-    "commercial-film": <Film className="w-8 h-8 text-amber-500" />,
-    "culinary-photo": <Camera className="w-8 h-8 text-amber-500" />,
-    "digital-menu": <Smartphone className="w-8 h-8 text-amber-500" />,
-    "ai-production": <Sparkles className="w-8 h-8 text-amber-500" />,
-    "brand-system": <Layers className="w-8 h-8 text-amber-500" />,
+    "digital-web": <Globe className="w-8 h-8 text-amber-500" />,
+    "brand-creative": <Layers className="w-8 h-8 text-amber-500" />,
+    "commercial-content": <Film className="w-8 h-8 text-amber-500" />,
+    "ai-studio": <Sparkles className="w-8 h-8 text-amber-500" />,
+    "digital-solutions": <Smartphone className="w-8 h-8 text-amber-500" />,
   };
 
   return (
@@ -48,7 +49,7 @@ export default async function ServicesPage({ params }: ServicesPageProps) {
           </p>
         </div>
 
-        {/* Deep Dive into all 6 Services */}
+        {/* Deep Dive into all 5 Core Pillars */}
         <div className="space-y-16">
           {dict.services.items.map((srv, idx) => (
             <div
@@ -59,11 +60,11 @@ export default async function ServicesPage({ params }: ServicesPageProps) {
               <div className="lg:col-span-8 space-y-6">
                 <div className="flex items-center gap-3">
                   <span className="p-3.5 rounded-2xl bg-white/[0.04] border border-white/10">
-                    {iconMap[srv.id]}
+                    {iconMap[srv.id] || <Sparkles className="w-8 h-8 text-amber-500" />}
                   </span>
                   <div>
                     <span className="font-mono text-xs text-amber-500 font-bold uppercase">
-                      SERVICE 0{idx + 1} • {srv.tag}
+                      {isArabic ? `الركيزة 0${idx + 1}` : `PILLAR 0${idx + 1}`} • {srv.tag}
                     </span>
                     <h2 className="text-2xl sm:text-3xl font-display font-bold text-white">
                       {srv.title}
@@ -81,17 +82,17 @@ export default async function ServicesPage({ params }: ServicesPageProps) {
 
                 <div className="pt-2 flex flex-wrap gap-2 text-xs font-mono text-white/70">
                   <span className="px-3 py-1 rounded-full bg-white/[0.04] border border-white/10">
-                    STANDARD CINÉMA / NEXT.JS
+                    PRODUCTION-GRADE
                   </span>
                   <span className="px-3 py-1 rounded-full bg-white/[0.04] border border-white/10">
-                    LIVRABLE CLÉ EN MAIN
+                    ZERO TEMPLATES
                   </span>
                 </div>
               </div>
 
               <div className="lg:col-span-4 flex flex-col justify-center items-start lg:items-end gap-4 p-6 rounded-2xl bg-white/[0.02] border border-white/5">
                 <span className="text-xs font-mono text-[#a0a0ab] uppercase">
-                  DÉMARRER AVEC CETTE EXPERTISE
+                  {isArabic ? "تفعيل هذه الخدمة" : isFrench ? "DÉMARRER AVEC CETTE EXPERTISE" : "INITIATE THIS CAPABILITY"}
                 </span>
                 <Button
                   href={`/${locale}/contact?service=${srv.id}`}
@@ -99,13 +100,13 @@ export default async function ServicesPage({ params }: ServicesPageProps) {
                   size="md"
                   icon={<ArrowUpRight className="w-4 h-4" />}
                 >
-                  Intégrer à mon projet
+                  {dict.common.startProject}
                 </Button>
                 <Link
                   href={`/${locale}/work`}
                   className="text-xs font-mono text-amber-400 hover:text-amber-300 transition-colors uppercase inline-flex items-center gap-1"
                 >
-                  <span>Voir des exemples</span>
+                  <span>{dict.common.exploreWork}</span>
                   <ArrowUpRight className="w-3 h-3" />
                 </Link>
               </div>

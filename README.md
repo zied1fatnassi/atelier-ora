@@ -1,5 +1,6 @@
-# ATELIER ORA — Creative Technology & Commercial Film Studio
-> **Bespoke Digital Presence, 4K Commercial Video, and Interactive Experiences for Premier Hospitality & Lifestyle Brands.**
+# AURA DESIGN — Digital Experiences, Content & AI
+> **Web. Content. AI. Built for brands that want to stand out.**  
+> Official Platform: [https://aura-design.tech](https://aura-design.tech)
 
 [![CI Pipeline](https://github.com/zied1fatnassi/atelier-ora/actions/workflows/ci.yml/badge.svg)](https://github.com/zied1fatnassi/atelier-ora/actions)
 [![Next.js 16](https://img.shields.io/badge/Next.js-16.3.8-black?style=flat&logo=next.js)](https://nextjs.org/)
@@ -11,94 +12,52 @@
 
 ## ✦ Overview
 
-**Atelier Ora** (`أتيليه أورا`) is a creative digital studio combining high-velocity web engineering, 4K commercial cinematography, editorial photography, and interactive digital menus.
+**AURA DESIGN** (`أورا ديزاين`) is a creative digital agency that combines web development, visual content production, branding, motion, and AI to help businesses present themselves at a higher level and turn attention into business.
 
-We help premier local destinations — **specialty coffee shops, fine dining restaurants, fitness sanctuaries, boutique hotels, curated retail boutiques, and aesthetic spas** — build the digital presence people experience before they even set foot in the venue.
+We combine strategy, design, technology, photography, video production, motion, and AI into one creative workflow to build complete digital experiences for **boutique hotels, premier restaurants & cafés, gyms & fitness sanctuaries, luxury brands, real estate firms, and high-growth businesses**.
 
 ---
 
-## ✦ Core Capabilities & Pages (12 Complete Pages)
+## ✦ The 5 Core Service Pillars
 
-1. **Cinematic Homepage (`/[locale]`)**
-   - 4K Camera HUD overlays (`24 FPS`, `REC`, `TUNIS 36.8°N 10.1°E`, `D-LOG M 10-BIT`).
-   - Strategic manifesto & core positioning.
-   - Outcome-driven services breakdown.
-   - Flagship concept projects showcase.
-   - Interactive industry selector with dynamic visual swaps.
-   - Agile production section (Shoot → Edit → Design → Publish).
-   - Live interactive Digital Menu simulation with WhatsApp order flow.
-   - 3-stage AI & Visual Innovation transformation pipeline.
-   - 5-step standardized client methodology.
-   - Transparent "Starting from" pricing tiers with interactive budget estimator.
-   - High-conversion invitation CTA.
+1. **Digital & Web Experiences (`/services#digital-web`)**
+   - Production-grade websites, corporate platforms, and high-conversion landing pages.
+   - Bespoke web applications engineered for speed, responsiveness, and search authority.
 
-2. **Work Portfolio (`/[locale]/work`)**
-   - Flagship studio concept portfolio with full-bleed media and client impact metrics.
+2. **Brand & Creative Direction (`/services#brand-creative`)**
+   - Brand identity systems, visual guidelines, typography, and art direction.
+   - Campaign conceptualization and digital product design that command attention.
 
-3. **Editorial Case Studies (`/[locale]/work/[slug]`)**
-   - Flagship 1: **Café Mirador & Roastery** (Specialty Coffee in Sidi Bou Said).
-   - Flagship 2: **Kinetix Athletic Club** (High-Performance Sanctuary in La Marsa).
-   - Flagship 3: **Dar El Bahr Gastronomie** (Coastal Fine Dining in Gammarth).
+3. **Commercial Content Production (`/services#commercial-content`)**
+   - High-end commercial and brand films with DaVinci Resolve color mastering and 32-bit float audio.
+   - High-resolution editorial photography, hospitality storytelling, and social media reels.
 
-4. **Services (`/[locale]/services`)**
-   - Web Experiences, Commercial Films, Culinary Photography, PWA Menus, AI VFX, and Brand Systems.
+4. **AI Creative Studio (`/services#ai-studio`)**
+   - Generative video, concept development, rapid prototyping, and AI-assisted post-production.
+   - Boundary-pushing visual effects and campaign innovation.
 
-5. **Industries (`/[locale]/industries`)**
-   - Deep-dives into Coffee, Gastronomy, Fitness, Boutique Hotels, Retail, and Spas.
+5. **Digital & AI Solutions (`/services#digital-solutions`)**
+   - Interactive digital menus and QR systems for hospitality venues.
+   - Bespoke business automation, analytics dashboards, client portals, and AI assistant integrations.
 
-6. **Production & Cinema (`/[locale]/production`)**
-   - Camera arsenal: DJI Osmo Pocket 3 & 4, Full-frame cinema cameras, 32-bit float audio, and DaVinci Resolve color grading.
+---
 
-7. **Digital Menu Product Page (`/[locale]/digital-menu`)**
-   - Interactive live smartphone mockup with real-time category filtering, trilingual switcher, QR demo, and WhatsApp checkout.
-   - Concrete ROI metrics (0 TND paper reprints, +38% average ticket lift).
+## ✦ Global Multilingual Architecture
 
-8. **Pricing & Cost Calculator (`/[locale]/pricing`)**
-   - Launch (from 1,490 TND), Growth (from 2,400 TND), Studio Care (from 900 TND/mo).
-   - Interactive scope estimator with instant Dinar (TND) calculation and FAQ accordion.
-
-9. **About Studio (`/[locale]/about`)**
-   - Manifesto, team biographies, lab specifications, and Tunis studio coordinates.
-
-10. **Contact & Guided Project Planner (`/[locale]/contact`)**
-    - 5-step guided project planner with `localStorage` autosave.
-    - Direct WhatsApp hotline (`+216 29 888 900`).
-    - Dedicated lead ingestion endpoint at `/api/contact`.
-
-11. **Privacy Policy (`/[locale]/privacy`)**
-    - GDPR and Tunisian regulations compliance.
-
-12. **Terms of Service (`/[locale]/terms`)**
-    - Commercial agreements, IP transfer, and shoot guidelines.
+Built natively on Next.js App Router i18n routing (`/[locale]/...`):
+- **English (`en`)**: Primary global language.
+- **Français (`fr`)**: Regional European and North African business standard.
+- **العربية (`ar`)**: Native Right-To-Left (`dir="rtl"`), Cairo typography, and mirrored micro-interactions.
 
 ---
 
 ## ✦ Design System & Tokens
 
-- **Palette:**
-  - `bg-canvas`: `#060608` (Deep obsidian black)
-  - `bg-surface`: `#0d0d12` (Elevated dark studio panel)
-  - `brand-amber`: `#f59e0b` (Solar Ochre / Accent)
-  - `brand-cine-red`: `#ef4444` (Cinema REC pulse indicator)
-  - `text-primary`: `#f8f8fa` (Titanium crisp white)
-  - `text-secondary`: `#a0a0ab` (Cool slate)
-- **Typography:**
-  - Display: **Syne** (Variable 400-800, high-fashion editorial cut)
-  - Body: **Plus Jakarta Sans** (Ultra-crisp readability)
-  - Arabic: **Cairo** (Balanced Arabic calligraphy)
-- **Micro-Interactions:**
-  - Desktop custom cursor with contextual state transitions (`VIEW`, `PLAY`, `DRAG`, `EXPLORE`), disabled on mobile touch devices.
-  - Film grain SVG texture layer.
-  - Full WCAG 2.2 AA accessibility compliance with `prefers-reduced-motion` and `data-reduced-motion` controls.
-
----
-
-## ✦ Multilingual & RTL Architecture
-
-Built natively on Next.js App Router i18n routing (`/[locale]/...`):
-- **Français (`fr`)**: Default business language in Tunisia.
-- **English (`en`)**: Global business reach.
-- **العربية (`ar`)**: Native Right-To-Left (`dir="rtl"`), Arabic typographic hierarchy, and reversed animation choreographies.
+- **Obsidian Black Canvas:** `#060608`
+- **Surface Elevation:** `#0d0d12` / `#14141c`
+- **Brand Accent:** Solar Amber `#f59e0b` (Cinematic warmth & creative authority)
+- **Typography:** Syne (Display), Plus Jakarta Sans (Body), Cairo (Arabic RTL)
+- **Accessibility:** WCAG 2.2 AA compliant with real-time `prefers-reduced-motion` detection and user overrides (`aura-design-reduced-motion`).
 
 ---
 
@@ -109,20 +68,11 @@ Built natively on Next.js App Router i18n routing (`/[locale]/...`):
 | **Framework** | Next.js 16 (Turbopack, App Router) |
 | **UI Library** | React 19 |
 | **Language** | TypeScript (Strict mode) |
-| **Styling** | Tailwind CSS v4 + Custom Design Tokens |
-| **Motion** | `motion/react` + Pure CSS Transforms |
+| **Styling** | Tailwind CSS v4 + Design Tokens |
+| **Motion** | `motion/react` + Hardware-accelerated CSS |
 | **Icons** | Lucide React |
-| **QA / E2E Testing** | Playwright MCP |
-| **Deployment** | Vercel |
-
----
-
-## ✦ DevOps & CI/CD Pipeline
-
-The project includes an automated GitHub Actions workflow (`.github/workflows/ci.yml`) triggering on pushes to `main`:
-1. **Lint Check**: `npm run lint`
-2. **Type Check**: `npx tsc --noEmit`
-3. **Production Build**: `npm run build` (Ensuring all 49 multilingual static routes compile cleanly)
+| **Single Source of Truth** | `src/config/site.ts` |
+| **Deployment** | Vercel (Connected to GitHub `main`) |
 
 ---
 
@@ -143,7 +93,7 @@ npm install
 ```bash
 npm run dev
 ```
-Open [http://localhost:3000](http://localhost:3000) to view the site.
+Open [http://localhost:3000](http://localhost:3000) to view the platform.
 
 ### 4. Build for production
 ```bash
@@ -153,25 +103,18 @@ npm run start
 
 ---
 
-## ✦ Deployment to Vercel
+## ✦ Studio Coordinates & Contact
 
-This repository is connected directly to Vercel for zero-config automatic deployments on git push:
-
-```bash
-# Push to main branch
-git push origin main
-```
-
-Vercel will detect Next.js 16 and trigger an optimized edge deployment with global CDN caching.
-
----
-
-## ✦ Studio Coordinates
-
-- **Studio Headquarters:** Les Berges du Lac 2 / La Marsa, Tunis
-- **WhatsApp Hotline:** [+216 29 888 900](https://wa.me/21629888900)
-- **Direct Email:** [contact@atelierora.studio](mailto:contact@atelierora.studio)
+- **Platform URL:** [https://aura-design.tech](https://aura-design.tech)
+- **Headquarters:** Mahdia, Tunisia (5111)
+- **Timezone:** Africa/Tunis (Operating 24/7)
+- **Phone / WhatsApp:** [+216 55 689 162](https://wa.me/21655689162)
+- **General Inquiries:** [hello@aura-design.tech](mailto:hello@aura-design.tech)
+- **Project Proposals:** [projects@aura-design.tech](mailto:projects@aura-design.tech)
+- **Client Support:** [support@aura-design.tech](mailto:support@aura-design.tech)
+- **Data Privacy Office:** [privacy@aura-design.tech](mailto:privacy@aura-design.tech)
 
 ---
 
-© 2026 Atelier Ora Studio. All rights reserved.
+© 2026 Aura design. All rights reserved.
+

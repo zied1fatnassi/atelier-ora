@@ -1,4 +1,5 @@
 import { Dictionary } from "@/i18n/get-dictionary";
+import { siteConfig } from "@/config/site";
 import { SectionHeading } from "../ui/SectionHeading";
 
 interface ProcessSectionProps {
@@ -30,7 +31,7 @@ export function ProcessSection({ dict }: ProcessSectionProps) {
               >
                 {isMonthlyCare && (
                   <div className="absolute top-0 end-0 px-4 py-1 bg-amber-500 text-black text-[10px] font-mono font-bold uppercase tracking-wider rounded-bl-xl">
-                    PARTENARIAT CONTINU
+                    CONTINUOUS PARTNERSHIP
                   </div>
                 )}
 
@@ -54,7 +55,7 @@ export function ProcessSection({ dict }: ProcessSectionProps) {
                 </div>
 
                 <div className="pt-6 mt-6 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-white/40">
-                  <span>ATELIER ORA PROTOCOL</span>
+                  <span>{siteConfig.name} WORKFLOW</span>
                   <span className="text-amber-500/80">STANDARDIZED</span>
                 </div>
               </div>

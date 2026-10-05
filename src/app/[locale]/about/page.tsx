@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { isValidLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
+import { siteConfig } from "@/config/site";
 import { Button } from "@/components/ui/Button";
 import { ArrowUpRight, MapPin } from "lucide-react";
 
@@ -49,7 +50,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
         <div className="p-8 sm:p-14 rounded-[36px] bg-[#0c0c12] border border-white/10 space-y-8 relative overflow-hidden">
           <div className="max-w-3xl space-y-6">
             <span className="text-xs font-mono text-amber-500 uppercase tracking-widest block">
-              NOTRE MANIFESTE FONDATUR
+              {locale === "ar" ? "فلسفتنا في العمل" : locale === "fr" ? "NOTRE PHILOSOPHIE" : "OUR PHILOSOPHY"}
             </span>
             <h2 className="text-3xl sm:text-4xl font-display font-bold text-white leading-snug">
               {dict.about.philosophyTitle}
@@ -74,19 +75,19 @@ export default async function AboutPage({ params }: AboutPageProps) {
           </div>
         </div>
 
-        {/* Team Members */}
+        {/* Studio Disciplines */}
         <div className="space-y-12">
           <div className="border-b border-white/10 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
               <span className="text-xs font-mono text-amber-500 uppercase tracking-widest">
-                L&apos;ÉQUIPE DU STUDIO
+                {locale === "ar" ? "مجالات الإتقان والإنتاج" : locale === "fr" ? "DISCIPLINES DU STUDIO" : "STUDIO DISCIPLINES"}
               </span>
               <h2 className="text-3xl font-display font-bold text-white mt-1">
-                Des passionnés de l&apos;image et du code.
+                {locale === "ar" ? "تكامل الإبداع والسينما والبرمجة." : locale === "fr" ? "L'union du design, de l'image et du code." : "Where design, cinema & software converge."}
               </h2>
             </div>
             <span className="text-xs font-mono text-[#a0a0ab]">
-              TUNIS • SIDI BOU SAID • PARIS
+              {siteConfig.location.city.toUpperCase()} • TUNISIA • 24/7
             </span>
           </div>
 
@@ -119,8 +120,8 @@ export default async function AboutPage({ params }: AboutPageProps) {
                   </p>
                 </div>
                 <div className="pt-4 border-t border-white/5 flex items-center justify-between text-[10px] font-mono text-white/40">
-                  <span>ATELIER ORA CORE</span>
-                  <span>TUNIS</span>
+                  <span>{siteConfig.name}</span>
+                  <span>{siteConfig.location.city.toUpperCase()}</span>
                 </div>
               </div>
             ))}
@@ -132,13 +133,17 @@ export default async function AboutPage({ params }: AboutPageProps) {
           <div className="space-y-3">
             <div className="flex items-center gap-2 text-xs font-mono text-amber-500 uppercase">
               <MapPin className="w-4 h-4" />
-              <span>NOTRE ATELIER CRÉATIF</span>
+              <span>{locale === "ar" ? "المقر والتواجد" : locale === "fr" ? "NOTRE BASE OPÉRATIONNELLE" : "STUDIO HEADQUARTERS"}</span>
             </div>
             <h3 className="text-2xl sm:text-3xl font-display font-bold text-white">
-              Venez prendre un café à notre studio.
+              {locale === "ar" ? "تواصل مع فريقنا الإبداعي." : locale === "fr" ? "Échangez directement avec notre équipe." : "Connect with our creative studio."}
             </h3>
             <p className="text-sm text-[#a0a0ab] max-w-xl">
-              Nous sommes basés entre Les Berges du Lac 2 et La Marsa à Tunis. Venez nous rencontrer pour discuter de votre prochain projet autour d&apos;un espresso de spécialité.
+              {locale === "ar"
+                ? `المقر في ${siteConfig.location.address}. نعمل مع العلامات الطموحة محلياً ودولياً على مدار الساعة.`
+                : locale === "fr"
+                ? `Basé à ${siteConfig.location.address}. Nous collaborons avec des marques ambitieuses en Tunisie et à l'international.`
+                : `Headquartered in ${siteConfig.location.address}. We collaborate with ambitious businesses across Tunisia, Europe, the Middle East, and worldwide.`}
             </p>
           </div>
           <Button
@@ -147,7 +152,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
             size="lg"
             icon={<ArrowUpRight className="w-4 h-4" />}
           >
-            Prendre rendez-vous
+            {dict.common.startProject}
           </Button>
         </div>
       </div>

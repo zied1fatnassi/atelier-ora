@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { isValidLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
+import { siteConfig } from "@/config/site";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { ArrowUpRight } from "lucide-react";
@@ -19,6 +20,8 @@ export default async function WorkPage({ params }: WorkPageProps) {
   }
 
   const dict = getDictionary(locale);
+  const isArabic = locale === "ar";
+  const isFrench = locale === "fr";
 
   return (
     <div className="py-32 px-4 md:px-8 bg-[#060608] min-h-screen">
@@ -28,7 +31,7 @@ export default async function WorkPage({ params }: WorkPageProps) {
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-amber-500" />
             <span className="font-mono text-xs tracking-widest text-amber-400 uppercase">
-              PORTFOLIO D&apos;AUTEUR
+              {dict.projects.tag}
             </span>
           </div>
 
@@ -133,7 +136,7 @@ export default async function WorkPage({ params }: WorkPageProps) {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 text-xs text-[#a0a0ab]">
                 <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/5 space-y-2">
                   <span className="font-mono text-amber-400 uppercase tracking-wider block">
-                    LE DÉFI :
+                    {isArabic ? "التحدي :" : isFrench ? "LE DÉFI :" : "THE CHALLENGE:"}
                   </span>
                   <p className="leading-relaxed text-white/80">
                     {project.challenge}
@@ -141,7 +144,7 @@ export default async function WorkPage({ params }: WorkPageProps) {
                 </div>
                 <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/5 space-y-2">
                   <span className="font-mono text-amber-400 uppercase tracking-wider block">
-                    LA SOLUTION ATELIER ORA :
+                    {isArabic ? `حل ${siteConfig.name} :` : isFrench ? `LA SOLUTION ${siteConfig.name} :` : `${siteConfig.name} SOLUTION:`}
                   </span>
                   <p className="leading-relaxed text-white/80">
                     {project.solution}
@@ -149,7 +152,7 @@ export default async function WorkPage({ params }: WorkPageProps) {
                 </div>
                 <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/5 space-y-2">
                   <span className="font-mono text-amber-400 uppercase tracking-wider block">
-                    RÉSULTATS OBTENUS :
+                    {isArabic ? "النتائج والمخرجات :" : isFrench ? "LIVRABLES & RÉSULTATS :" : "KEY DELIVERABLES:"}
                   </span>
                   <ul className="space-y-1 text-white/90">
                     {project.results.map((r, rI) => (

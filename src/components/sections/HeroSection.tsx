@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Locale } from "@/i18n/config";
 import { Dictionary } from "@/i18n/get-dictionary";
+import { siteConfig } from "@/config/site";
 import { Button } from "../ui/Button";
 import { Badge } from "../ui/Badge";
 import { ArrowUpRight, Play, Camera, Film } from "lucide-react";
@@ -22,7 +23,7 @@ export function HeroSection({ locale, dict }: HeroSectionProps) {
         <div className="absolute inset-0 opacity-25 mix-blend-luminosity scale-105 transition-transform duration-1000 ease-out">
           <Image
             src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=2400&q=85"
-            alt="Atelier Ora Studio Atmosphere"
+            alt={`${siteConfig.name} Atmosphere`}
             fill
             priority
             className="object-cover object-center filter grayscale contrast-125"
@@ -111,11 +112,11 @@ export function HeroSection({ locale, dict }: HeroSectionProps) {
           <div className="mt-4 pt-4 border-t border-white/5 flex flex-wrap items-center justify-between text-[11px] font-mono text-[#60606c] gap-2">
             <span className="flex items-center gap-1.5">
               <Camera className="w-3.5 h-3.5 text-amber-500" />
-              <span>DJI OSMO POCKET 3 & 4 • CINEMA RIGS</span>
+              <span>COMMERCIAL CINEMA RIGS • 4K</span>
             </span>
             <span className="flex items-center gap-1.5">
               <Film className="w-3.5 h-3.5 text-amber-500" />
-              <span>DAVINCI RESOLVE D-LOG M COLOR GRADING</span>
+              <span>DAVINCI RESOLVE COLOR LAB</span>
             </span>
             <Link
               href={`/${locale}/production`}

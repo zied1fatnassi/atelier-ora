@@ -5,7 +5,7 @@ import { Locale } from "@/i18n/config";
 import { Dictionary } from "@/i18n/get-dictionary";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Button } from "../ui/Button";
-import { Check, ArrowUpRight, Calculator, Plus } from "lucide-react";
+import { Check, ArrowUpRight, Layers, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface PricingSectionProps {
@@ -14,35 +14,80 @@ interface PricingSectionProps {
 }
 
 export function PricingSection({ locale, dict }: PricingSectionProps) {
-  // Interactive estimator state
-  const [selectedServices, setSelectedServices] = useState<string[]>([
-    "web",
-    "photo",
-  ]);
+  const isArabic = locale === "ar";
+  const isFrench = locale === "fr";
 
-  const addOnOptions = [
-    { id: "web", name: "Site Web Vitrine Sur-Mesure", price: 1200 },
-    { id: "film", name: "Film Commercial 4K + 3 Reels", price: 950 },
-    { id: "photo", name: "Séance Photo Éditoriale (25 photos)", price: 450 },
-    { id: "menu", name: "Menu Digital QR Trilingue PWA", price: 650 },
-    { id: "branding", name: "Identité Visuelle & Logo Suite", price: 800 },
-    { id: "ai", name: "Séquence Vidéo Conceptuelle IA", price: 500 },
+  const scopeCapabilities = [
+    {
+      id: "web",
+      name: isArabic
+        ? "منصة ويب مخصصة بالكامل"
+        : isFrench
+        ? "Plateforme Web Sur-Mesure"
+        : "Bespoke Web Platform",
+      category: isArabic ? "هندسة الويب" : "Web Engineering",
+    },
+    {
+      id: "film",
+      name: isArabic
+        ? "تصوير وإنتاج فيديو تجاري 4K"
+        : isFrench
+        ? "Production Vidéo Commerciale 4K"
+        : "4K Commercial Video Production",
+      category: isArabic ? "السينما" : "Cinema",
+    },
+    {
+      id: "photo",
+      name: isArabic
+        ? "تصوير فوتوغرافي للمكان والأطباق"
+        : isFrench
+        ? "Photographie Éditoriale & Culinaire"
+        : "Editorial & Product Photography",
+      category: isArabic ? "التصوير" : "Photography",
+    },
+    {
+      id: "menu",
+      name: isArabic
+        ? "منيو رقمي تفاعلي سريع PWA"
+        : isFrench
+        ? "Menu Digital PWA Trilingue"
+        : "Trilingual PWA Digital Menu",
+      category: isArabic ? "الضيافة" : "Hospitality",
+    },
+    {
+      id: "branding",
+      name: isArabic
+        ? "هوية بصرية ونظام تصميم متكامل"
+        : isFrench
+        ? "Identité Visuelle & Charte"
+        : "Brand Identity & Systems",
+      category: isArabic ? "الهوية" : "Branding",
+    },
+    {
+      id: "ai",
+      name: isArabic
+        ? "استوديو الذكاء الاصطناعي وتجسيد 3D"
+        : isFrench
+        ? "Séquences & Renders 3D / IA"
+        : "AI Conceptual Renders & VFX",
+      category: isArabic ? "الابتكار" : "AI Studio",
+    },
   ];
 
-  const toggleService = (id: string) => {
-    if (selectedServices.includes(id)) {
-      if (selectedServices.length > 1) {
-        setSelectedServices(selectedServices.filter((s) => s !== id));
+  const [selectedCapabilities, setSelectedCapabilities] = useState<string[]>([
+    "web",
+    "film",
+  ]);
+
+  const toggleCapability = (id: string) => {
+    if (selectedCapabilities.includes(id)) {
+      if (selectedCapabilities.length > 1) {
+        setSelectedCapabilities(selectedCapabilities.filter((c) => c !== id));
       }
     } else {
-      setSelectedServices([...selectedServices, id]);
+      setSelectedCapabilities([...selectedCapabilities, id]);
     }
   };
-
-  const estimatedTotal = selectedServices.reduce((sum, id) => {
-    const item = addOnOptions.find((o) => o.id === id);
-    return sum + (item ? item.price : 0);
-  }, 0);
 
   return (
     <section className="py-24 md:py-32 px-4 md:px-8 bg-[#09090e] border-t border-white/5 relative">
@@ -60,7 +105,7 @@ export function PricingSection({ locale, dict }: PricingSectionProps) {
           </p>
         </div>
 
-        {/* 3 Core Starting From Packages */}
+        {/* 3 Core Engagement Models */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
           {dict.pricing.tiers.map((tier) => (
             <div
@@ -96,13 +141,15 @@ export function PricingSection({ locale, dict }: PricingSectionProps) {
                 </div>
 
                 <div className="pt-4 border-t border-white/10">
-                  <div className="font-display font-bold text-3xl sm:text-4xl text-white tracking-tight">
+                  <div className="font-display font-bold text-2xl sm:text-3xl text-white tracking-tight">
                     {tier.price}
                   </div>
                   <span className="text-[11px] font-mono text-[#a0a0ab] mt-1 block">
-                    {tier.id === "ongoing"
-                      ? "Facturation mensuelle sans engagement long terme"
-                      : "Montant estimatif de base hors taxes"}
+                    {isArabic
+                      ? "عقد مخصص يحدد بوضوح وفق متطلبات مشروعك"
+                      : isFrench
+                      ? "Cadrage sur-mesure défini selon vos objectifs"
+                      : "Custom scope tailored to your operational requirements"}
                   </span>
                 </div>
 
@@ -131,12 +178,12 @@ export function PricingSection({ locale, dict }: PricingSectionProps) {
           ))}
         </div>
 
-        {/* Interactive Estimator Box */}
+        {/* Interactive Scope Configuration Box */}
         <div className="p-8 sm:p-12 rounded-3xl bg-[#111119] border border-white/15 shadow-2xl space-y-8">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/10 pb-6">
             <div className="flex items-center gap-3">
               <span className="p-3 rounded-2xl bg-amber-500/10 text-amber-500 border border-amber-500/20">
-                <Calculator className="w-6 h-6" />
+                <Layers className="w-6 h-6" />
               </span>
               <div>
                 <h3 className="font-display font-semibold text-xl sm:text-2xl text-white">
@@ -150,24 +197,22 @@ export function PricingSection({ locale, dict }: PricingSectionProps) {
 
             <div className="text-end">
               <div className="text-xs font-mono text-[#a0a0ab] uppercase tracking-wider">
-                ESTIMATION PRÉVISIONNELLE
+                {isArabic ? "القدرات المختارة" : isFrench ? "COMPOSANTS SÉLECTIONNÉS" : "SELECTED PILLARS"}
               </div>
-              <div
-                suppressHydrationWarning
-                className="text-3xl font-display font-extrabold text-amber-400"
-              >
-                ~ {estimatedTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} TND
+              <div className="text-2xl sm:text-3xl font-display font-extrabold text-amber-400">
+                {selectedCapabilities.length} / {scopeCapabilities.length}
               </div>
             </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {addOnOptions.map((opt) => {
-              const isSelected = selectedServices.includes(opt.id);
+            {scopeCapabilities.map((opt) => {
+              const isSelected = selectedCapabilities.includes(opt.id);
               return (
                 <button
                   key={opt.id}
-                  onClick={() => toggleService(opt.id)}
+                  type="button"
+                  onClick={() => toggleCapability(opt.id)}
                   className={cn(
                     "p-4 rounded-2xl border text-start transition-all flex items-center justify-between outline-none focus-visible:ring-2 focus-visible:ring-amber-500",
                     isSelected
@@ -179,13 +224,13 @@ export function PricingSection({ locale, dict }: PricingSectionProps) {
                     <div className="font-medium text-xs sm:text-sm text-white">
                       {opt.name}
                     </div>
-                    <div className="text-xs font-mono text-amber-400 mt-1">
-                      + {opt.price} TND
+                    <div className="text-[11px] font-mono text-amber-400/80 mt-1 uppercase">
+                      {opt.category}
                     </div>
                   </div>
                   <span
                     className={cn(
-                      "p-1.5 rounded-full transition-colors",
+                      "p-1.5 rounded-full transition-colors shrink-0 ms-2",
                       isSelected
                         ? "bg-amber-500 text-black"
                         : "bg-white/5 text-white/30"
@@ -200,15 +245,19 @@ export function PricingSection({ locale, dict }: PricingSectionProps) {
 
           <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#a0a0ab]">
             <span>
-              * Le devis final peut varier en fonction du nombre de pages et des spécificités du tournage.
+              {isArabic
+                ? "* يتم تدقيق المواصفات الفنية وتحديد الخطة الزمنية بدقة في العرض الفني النهائي."
+                : isFrench
+                ? "* Le cadrage technique final et le planning de production sont confirmés dans la proposition définitive."
+                : "* Technical scope, shoot scheduling, and deliverables are calibrated in the custom proposal."}
             </span>
             <Button
-              href={`/${locale}/contact?estimated=${estimatedTotal}`}
+              href={`/${locale}/contact?scope=${selectedCapabilities.join(",")}`}
               variant="primary"
               size="md"
               icon={<ArrowUpRight className="w-4 h-4" />}
             >
-              Valider cette configuration
+              {dict.common.startProject}
             </Button>
           </div>
         </div>

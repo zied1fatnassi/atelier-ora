@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Locale } from "@/i18n/config";
 import { Dictionary } from "@/i18n/get-dictionary";
+import { siteConfig } from "@/config/site";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Button } from "../ui/Button";
 import {
@@ -27,10 +28,13 @@ export function DigitalMenuPreviewSection({
   locale,
   dict,
 }: DigitalMenuPreviewSectionProps) {
-  const [selectedCategory, setSelectedCategory] = useState("Tous");
-  const [phoneLang, setPhoneLang] = useState<"FR" | "AR" | "EN">("FR");
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [phoneLang, setPhoneLang] = useState<"EN" | "FR" | "AR">("EN");
   const [orderItems, setOrderItems] = useState<string[]>([]);
   const [showQrModal, setShowQrModal] = useState(false);
+
+  const isArabic = locale === "ar";
+  const isFrench = locale === "fr";
 
   const categories = dict.digitalMenu.categories;
   const items = dict.digitalMenu.sampleItems;
@@ -48,11 +52,13 @@ export function DigitalMenuPreviewSection({
     }
   };
 
-  const whatsappOrderMessage = encodeURIComponent(
-    `Bonjour ! Je souhaite commander via votre menu digital :\n- ${orderItems.join(
-      "\n- "
-    )}\nMerci !`
-  );
+  const orderSummaryText = isArabic
+    ? `مرحباً، أود تأكيد طلبي عبر المنيو الرقمي:\n- ${orderItems.join("\n- ")}\nشكراً!`
+    : isFrench
+    ? `Bonjour ! Je souhaite commander via votre menu digital :\n- ${orderItems.join("\n- ")}\nMerci !`
+    : `Hello! I would like to place an order via your digital menu:\n- ${orderItems.join("\n- ")}\nThank you!`;
+
+  const whatsappOrderMessage = encodeURIComponent(orderSummaryText);
 
   return (
     <section className="py-24 md:py-32 px-4 md:px-8 bg-[#060608] relative">
@@ -72,7 +78,7 @@ export function DigitalMenuPreviewSection({
             icon={<QrCode className="w-4 h-4 text-amber-500" />}
             iconPosition="left"
           >
-            Scanner le QR Code Démo
+            {isArabic ? "مسح رمز QR التجريبي" : isFrench ? "Scanner le QR Code Démo" : "Scan Demo QR Code"}
           </Button>
         </div>
 
@@ -102,17 +108,21 @@ export function DigitalMenuPreviewSection({
             <div className="p-6 rounded-2xl bg-[#111118] border border-white/10 flex items-center justify-between flex-wrap gap-4">
               <div className="space-y-1">
                 <span className="text-xs font-mono text-amber-400 uppercase tracking-wider block">
-                  FONCTIONNALITÉ STAR
+                  {isArabic ? "ميزة الطلب المباشر" : isFrench ? "FONCTIONNALITÉ PHARE" : "FLAGSHIP FEATURE"}
                 </span>
                 <span className="text-sm font-medium text-white">
-                  Commande envoyée directement sur votre WhatsApp
+                  {isArabic
+                    ? "طلب الضيوف يصل مباشرة إلى واتساب فريقك"
+                    : isFrench
+                    ? "Commande envoyée directement sur votre WhatsApp"
+                    : "Orders transmitted directly to your team's WhatsApp"}
                 </span>
               </div>
               <Link
                 href={`/${locale}/digital-menu`}
                 className="inline-flex items-center gap-1.5 text-xs font-mono tracking-wider uppercase text-amber-400 hover:text-amber-300 font-semibold"
               >
-                <span>Voir la page produit complète</span>
+                <span>{dict.common.learnMore}</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
               </Link>
             </div>
@@ -133,18 +143,19 @@ export function DigitalMenuPreviewSection({
                   <div className="flex items-center justify-between">
                     <div>
                       <h4 className="font-display font-bold text-sm tracking-tight text-white">
-                        L&apos;ARTISAN &amp; COFFEE
+                        L&apos;ARTISAN ROASTERY
                       </h4>
                       <span className="text-[10px] text-amber-400 font-mono">
-                        MENU DIGITAL OFFICIEL
+                        DIGITAL MENU • PWA
                       </span>
                     </div>
 
                     {/* In-app Language Switcher */}
                     <div className="flex items-center gap-1 bg-black/40 p-1 rounded-full text-[10px] font-mono">
-                      {(["FR", "AR", "EN"] as const).map((l) => (
+                      {(["EN", "FR", "AR"] as const).map((l) => (
                         <button
                           key={l}
+                          type="button"
                           onClick={() => setPhoneLang(l)}
                           className={cn(
                             "px-2 py-0.5 rounded-full transition-colors",
@@ -166,7 +177,7 @@ export function DigitalMenuPreviewSection({
                     </span>
                     <span className="flex items-center gap-1">
                       <MapPin className="w-3 h-3 text-amber-400" />
-                      <span>La Marsa, Tunis</span>
+                      <span>Mahdia, Tunisia</span>
                     </span>
                   </div>
                 </div>
@@ -176,6 +187,7 @@ export function DigitalMenuPreviewSection({
                   {categories.map((cat) => (
                     <button
                       key={cat}
+                      type="button"
                       onClick={() => setSelectedCategory(cat)}
                       className={cn(
                         "px-3 py-1 rounded-full text-[11px] whitespace-nowrap transition-colors",
@@ -238,6 +250,7 @@ export function DigitalMenuPreviewSection({
                         </div>
 
                         <button
+                          type="button"
                           onClick={() => toggleItem(item.name)}
                           className={cn(
                             "p-2 rounded-full transition-colors shrink-0",
@@ -245,7 +258,7 @@ export function DigitalMenuPreviewSection({
                               ? "bg-amber-500 text-black"
                               : "bg-white/10 text-white hover:bg-white/20"
                           )}
-                          aria-label={`Ajouter ${item.name} à la commande`}
+                          aria-label={`Toggle ${item.name}`}
                         >
                           {isSelected ? <Check className="w-3.5 h-3.5" /> : <Plus className="w-3.5 h-3.5" />}
                         </button>
@@ -258,16 +271,16 @@ export function DigitalMenuPreviewSection({
                 {orderItems.length > 0 && (
                   <div className="p-3 bg-[#161622] border-t border-white/10 flex items-center justify-between gap-2">
                     <div className="text-[11px]">
-                      <span className="text-white/60">{orderItems.length} article(s)</span>
+                      <span className="text-white/60">{orderItems.length} {isArabic ? "أصناف" : "item(s)"}</span>
                     </div>
                     <a
-                      href={`https://wa.me/21629888900?text=${whatsappOrderMessage}`}
+                      href={`${siteConfig.contact.whatsappLink}?text=${whatsappOrderMessage}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="px-3.5 py-1.5 rounded-full bg-emerald-500 hover:bg-emerald-400 text-black font-semibold text-xs flex items-center gap-1.5 transition-colors"
                     >
                       <MessageCircle className="w-3.5 h-3.5" />
-                      <span>Commander sur WhatsApp</span>
+                      <span>{isArabic ? "طلب عبر واتساب" : isFrench ? "Commander sur WhatsApp" : "Order via WhatsApp"}</span>
                     </a>
                   </div>
                 )}
@@ -286,10 +299,14 @@ export function DigitalMenuPreviewSection({
         >
           <div className="p-8 rounded-3xl bg-[#12121a] border border-white/15 max-w-sm w-full text-center space-y-6 animate-in zoom-in-95 duration-200">
             <h3 className="text-xl font-display font-bold text-white">
-              Scannez le Menu Démo
+              {isArabic ? "امسح المنيو التجريبي" : isFrench ? "Scannez le Menu Démo" : "Scan Demo Menu"}
             </h3>
             <p className="text-xs text-[#a0a0ab]">
-              Pointez l&apos;appareil photo de votre smartphone pour ouvrir la démonstration interactive instantanée :
+              {isArabic
+                ? "وجّه كاميرا هاتفك لفتح المحاكي التفاعلي الفوري:"
+                : isFrench
+                ? "Pointez l'appareil photo de votre smartphone pour ouvrir la démonstration interactive :"
+                : "Point your smartphone camera to preview the live interactive menu:"}
             </p>
             <div className="p-4 bg-white rounded-2xl inline-block shadow-xl">
               <QrCode className="w-44 h-44 text-black" />
@@ -301,7 +318,7 @@ export function DigitalMenuPreviewSection({
                 size="sm"
                 className="w-full"
               >
-                Fermer
+                {dict.common.back}
               </Button>
             </div>
           </div>

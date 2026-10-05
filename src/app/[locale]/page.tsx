@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { Locale, isValidLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
+import { siteConfig } from "@/config/site";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { ManifestoSection } from "@/components/sections/ManifestoSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
@@ -26,6 +27,8 @@ export default async function HomePage({ params }: HomePageProps) {
   }
 
   const dict = getDictionary(locale);
+  const isArabic = locale === "ar";
+  const isFrench = locale === "fr";
 
   return (
     <div className="flex flex-col w-full overflow-hidden">
@@ -35,7 +38,7 @@ export default async function HomePage({ params }: HomePageProps) {
       {/* 02. Manifesto / Core Positioning */}
       <ManifestoSection dict={dict} />
 
-      {/* 03. What We Do / Outcomes */}
+      {/* 03. 5 Core Pillars */}
       <ServicesSection locale={locale as Locale} dict={dict} />
 
       {/* 04. Selected Flagship Work */}
@@ -51,12 +54,12 @@ export default async function HomePage({ params }: HomePageProps) {
       <DigitalMenuPreviewSection locale={locale as Locale} dict={dict} />
 
       {/* 08. AI & Visual Innovation */}
-      <AiSection dict={dict} />
+      <AiSection locale={locale as Locale} dict={dict} />
 
-      {/* 09. 5-Step Process */}
+      {/* 09. Structured Process */}
       <ProcessSection dict={dict} />
 
-      {/* 10. Transparent Pricing & Cost Estimator */}
+      {/* 10. Engagement Models & Scope Planner */}
       <PricingSection locale={locale as Locale} dict={dict} />
 
       {/* 11. Final High-Conversion CTA */}
@@ -68,15 +71,23 @@ export default async function HomePage({ params }: HomePageProps) {
 
         <div className="max-w-4xl mx-auto space-y-8 relative z-10">
           <span className="px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono text-xs uppercase tracking-widest inline-block">
-            NOUS SOMMES PRÊTS
+            {isArabic ? "متاح لمشاريع جديدة" : isFrench ? "DISPONIBLE POUR PROJETS" : "OPEN FOR COMMISSIONS"}
           </span>
 
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-display font-bold text-white tracking-tight leading-tight">
-            Prêt à transformer la présence digitale de votre établissement ?
+            {isArabic
+              ? "مستعد لتحويل الحضور الرقمي لمنشأتك؟"
+              : isFrench
+              ? "Prêt à transformer la présence digitale de votre établissement ?"
+              : "Ready to elevate your digital presence?"}
           </h2>
 
           <p className="text-base sm:text-xl text-[#a0a0ab] font-light max-w-2xl mx-auto leading-relaxed">
-            Échangeons sur vos ambitions. Nous concevons une proposition sur-mesure sous 24 heures.
+            {isArabic
+              ? "تواصل معنا لمناقشة تطلعاتك. نصمم لك مقترحاً دقيقاً ومفصلاً خلال 24 ساعة."
+              : isFrench
+              ? "Échangeons sur vos ambitions. Nous concevons une proposition sur-mesure sous 24 heures."
+              : "Let's discuss your project goals. We deliver a custom proposal within 24 hours."}
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
@@ -90,7 +101,7 @@ export default async function HomePage({ params }: HomePageProps) {
               {dict.common.startProject}
             </Button>
             <a
-              href="https://wa.me/21629888900"
+              href={siteConfig.contact.whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-[#12121a] border border-white/15 text-white hover:bg-white/10 transition-colors text-base font-medium shadow-md"
@@ -101,9 +112,9 @@ export default async function HomePage({ params }: HomePageProps) {
           </div>
 
           <div className="pt-8 text-xs font-mono text-white/40 flex items-center justify-center gap-4">
-            <span>TUNIS • LA MARSA • SIDI BOU SAID</span>
+            <span>{siteConfig.location.city.toUpperCase()} • TUNISIA • 24/7 STUDIO</span>
             <span>•</span>
-            <span>RÉPONSE SOUS 24H</span>
+            <span>{isArabic ? "رد خلال 24 ساعة" : isFrench ? "RÉPONSE SOUS 24H" : "24H RESPONSE"}</span>
           </div>
         </div>
       </section>

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Locale } from "@/i18n/config";
 import { Dictionary } from "@/i18n/get-dictionary";
 import { SectionHeading } from "../ui/SectionHeading";
-import { ArrowUpRight, Globe, Film, Camera, Smartphone, Sparkles, Layers } from "lucide-react";
+import { ArrowUpRight, Globe, Film, Smartphone, Sparkles, Layers } from "lucide-react";
 
 interface ServicesSectionProps {
   locale: Locale;
@@ -11,12 +11,11 @@ interface ServicesSectionProps {
 
 export function ServicesSection({ locale, dict }: ServicesSectionProps) {
   const iconMap: Record<string, React.ReactNode> = {
-    "web-experience": <Globe className="w-6 h-6 text-amber-500" />,
-    "commercial-film": <Film className="w-6 h-6 text-amber-500" />,
-    "culinary-photo": <Camera className="w-6 h-6 text-amber-500" />,
-    "digital-menu": <Smartphone className="w-6 h-6 text-amber-500" />,
-    "ai-production": <Sparkles className="w-6 h-6 text-amber-500" />,
-    "brand-system": <Layers className="w-6 h-6 text-amber-500" />,
+    "digital-web": <Globe className="w-6 h-6 text-amber-500" />,
+    "brand-creative": <Layers className="w-6 h-6 text-amber-500" />,
+    "commercial-content": <Film className="w-6 h-6 text-amber-500" />,
+    "ai-studio": <Sparkles className="w-6 h-6 text-amber-500" />,
+    "digital-solutions": <Smartphone className="w-6 h-6 text-amber-500" />,
   };
 
   return (
@@ -28,7 +27,7 @@ export function ServicesSection({ locale, dict }: ServicesSectionProps) {
           subtitle={dict.services.subtitle}
         />
 
-        {/* 6 Outcome-Oriented Service Cards */}
+        {/* 5 Core Capabilities */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {dict.services.items.map((service, idx) => (
             <div
@@ -38,7 +37,7 @@ export function ServicesSection({ locale, dict }: ServicesSectionProps) {
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div className="p-3 rounded-2xl bg-white/[0.04] border border-white/10 group-hover:bg-amber-500/10 group-hover:border-amber-500/20 transition-colors">
-                    {iconMap[service.id]}
+                    {iconMap[service.id] || <Sparkles className="w-6 h-6 text-amber-500" />}
                   </div>
                   <span className="font-mono text-xs text-[#a0a0ab] uppercase tracking-wider">
                     {service.tag}

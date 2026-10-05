@@ -16,7 +16,7 @@ export function CookieConsent({ dict }: CookieConsentProps) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const consent = localStorage.getItem("atelier-ora-cookie-consent");
+    const consent = localStorage.getItem("aura-design-cookie-consent");
     if (!consent) {
       const timer = setTimeout(() => setVisible(true), 1200);
       return () => clearTimeout(timer);
@@ -24,12 +24,12 @@ export function CookieConsent({ dict }: CookieConsentProps) {
   }, []);
 
   const handleAccept = () => {
-    localStorage.setItem("atelier-ora-cookie-consent", "granted");
+    localStorage.setItem("aura-design-cookie-consent", "granted");
     setVisible(false);
   };
 
   const handleDecline = () => {
-    localStorage.setItem("atelier-ora-cookie-consent", "declined");
+    localStorage.setItem("aura-design-cookie-consent", "declined");
     setVisible(false);
   };
 

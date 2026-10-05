@@ -1,8 +1,9 @@
 import { MetadataRoute } from "next";
 import { SUPPORTED_LOCALES } from "@/i18n/config";
+import { siteConfig } from "@/config/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://atelierora.studio";
+  const baseUrl = siteConfig.url;
   const routes = [
     "",
     "/work",

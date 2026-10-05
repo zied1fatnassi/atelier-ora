@@ -8,6 +8,7 @@ import { Dictionary } from "@/i18n/get-dictionary";
 import { LanguageSwitcher } from "../ui/LanguageSwitcher";
 import { ReducedMotionToggle } from "../ui/ReducedMotionToggle";
 import { Button } from "../ui/Button";
+import { AuraLogo } from "../brand/AuraLogo";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -60,24 +61,13 @@ export function Header({ locale, dict }: HeaderProps) {
               : "max-w-7xl px-2 py-0 bg-transparent border-transparent"
           )}
         >
-          {/* Logo & Studio Signature */}
+          {/* Brand Logo */}
           <Link
             href={`/${locale}`}
-            className="group flex items-center gap-2.5 outline-none focus-visible:ring-2 focus-visible:ring-amber-500 rounded-full"
-            aria-label={`${dict.common.studioName} - ${dict.common.studioTagline}`}
+            className="group flex items-center outline-none focus-visible:ring-2 focus-visible:ring-amber-500 rounded-lg p-1 transition-opacity hover:opacity-90"
+            aria-label={`${dict.common.studioName} — ${dict.common.studioTagline}`}
           >
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500" />
-            </span>
-            <div className="flex flex-col">
-              <span className="font-display font-extrabold tracking-tight text-base sm:text-lg text-white group-hover:text-amber-400 transition-colors">
-                {dict.common.studioName}
-              </span>
-              <span className="text-[9px] font-mono tracking-widest text-[#a0a0ab] uppercase hidden sm:block">
-                STUDIO • TUNIS
-              </span>
-            </div>
+            <AuraLogo variant="full" size="md" />
           </Link>
 
           {/* Desktop Navigation Links */}

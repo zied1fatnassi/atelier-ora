@@ -1,4 +1,5 @@
 import { Dictionary } from "@/i18n/get-dictionary";
+import { siteConfig } from "@/config/site";
 import { Quote } from "lucide-react";
 
 interface ManifestoSectionProps {
@@ -31,7 +32,7 @@ export function ManifestoSection({ dict }: ManifestoSectionProps) {
           <div className="mt-6 flex items-center gap-3">
             <span className="w-8 h-px bg-amber-500" />
             <span className="text-xs font-mono tracking-widest uppercase text-[#a0a0ab]">
-              ATELIER ORA • MANIFESTO 2026
+              {siteConfig.name} • MANIFESTO
             </span>
           </div>
         </div>

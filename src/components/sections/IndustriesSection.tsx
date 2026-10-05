@@ -16,6 +16,8 @@ interface IndustriesSectionProps {
 
 export function IndustriesSection({ locale, dict }: IndustriesSectionProps) {
   const [activeId, setActiveId] = useState(dict.industries.items[0].id);
+  const isArabic = locale === "ar";
+  const isFrench = locale === "fr";
 
   const iconMap: Record<string, React.ReactNode> = {
     coffee: <Coffee className="w-5 h-5" />,
@@ -23,7 +25,7 @@ export function IndustriesSection({ locale, dict }: IndustriesSectionProps) {
     fitness: <Dumbbell className="w-5 h-5" />,
     hotels: <Hotel className="w-5 h-5" />,
     retail: <ShoppingBag className="w-5 h-5" />,
-    beauty: <Sparkles className="w-5 h-5" />,
+    corporate: <Sparkles className="w-5 h-5" />,
   };
 
   const imagesMap: Record<string, string> = {
@@ -32,7 +34,7 @@ export function IndustriesSection({ locale, dict }: IndustriesSectionProps) {
     fitness: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80",
     hotels: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
     retail: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=80",
-    beauty: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80",
+    corporate: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
   };
 
   const activeIndustry =
@@ -75,7 +77,7 @@ export function IndustriesSection({ locale, dict }: IndustriesSectionProps) {
                           : "bg-white/[0.05] text-[#a0a0ab]"
                       )}
                     >
-                      {iconMap[ind.id]}
+                      {iconMap[ind.id] || <Sparkles className="w-5 h-5" />}
                     </span>
                     <span
                       className={cn(
@@ -106,7 +108,7 @@ export function IndustriesSection({ locale, dict }: IndustriesSectionProps) {
               <div className="absolute inset-0 z-0">
                 <Image
                   key={activeIndustry.id}
-                  src={imagesMap[activeIndustry.id]}
+                  src={imagesMap[activeIndustry.id] || imagesMap.coffee}
                   alt={activeIndustry.name}
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -121,7 +123,7 @@ export function IndustriesSection({ locale, dict }: IndustriesSectionProps) {
                   {activeIndustry.name}
                 </span>
                 <span className="text-xs font-mono text-white/50 tracking-wider">
-                  SPECIFIC CRAFT
+                  BESPOKE SCOPE
                 </span>
               </div>
 
@@ -133,7 +135,7 @@ export function IndustriesSection({ locale, dict }: IndustriesSectionProps) {
 
                 <div className="p-4 rounded-2xl bg-black/70 border border-white/10 backdrop-blur-md text-sm text-[#a0a0ab] space-y-2">
                   <div className="text-xs font-mono text-amber-400 uppercase tracking-wider">
-                    LIVRABLES CLÉS :
+                    {isArabic ? "المخرجات والخدمات :" : isFrench ? "LIVRABLES CLÉS :" : "KEY DELIVERABLES:"}
                   </div>
                   <p className="text-white/90 leading-relaxed">
                     {activeIndustry.deliverables}

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Locale } from "@/i18n/config";
 import { Dictionary } from "@/i18n/get-dictionary";
+import { siteConfig } from "@/config/site";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Badge } from "../ui/Badge";
 import { ArrowUpRight, Camera, Film, Sliders, Volume2, CheckCircle2 } from "lucide-react";
@@ -11,6 +12,9 @@ interface ProductionSectionProps {
 }
 
 export function ProductionSection({ locale, dict }: ProductionSectionProps) {
+  const isArabic = locale === "ar";
+  const isFrench = locale === "fr";
+
   const iconList = [
     <Camera key="1" className="w-5 h-5 text-amber-500" />,
     <Film key="2" className="w-5 h-5 text-amber-500" />,
@@ -70,7 +74,7 @@ export function ProductionSection({ locale, dict }: ProductionSectionProps) {
                   </p>
                 </div>
                 <div className="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-[10px] font-mono text-white/40">
-                  <span>ATELIER ORA PIPELINE</span>
+                  <span>{siteConfig.name} PIPELINE</span>
                   <span>VERIFIED</span>
                 </div>
               </div>
@@ -118,7 +122,13 @@ export function ProductionSection({ locale, dict }: ProductionSectionProps) {
             href={`/${locale}/production`}
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-amber-500 text-black font-semibold hover:bg-amber-400 transition-all text-sm shadow-[0_0_30px_rgba(245,158,11,0.25)]"
           >
-            <span>Explorer notre matériel & films de marque</span>
+            <span>
+              {isArabic
+                ? "استكشف معدات التصوير ومختبر الألوان"
+                : isFrench
+                ? "Explorer nos équipements & films de marque"
+                : "Explore our production equipment & films"}
+            </span>
             <ArrowUpRight className="w-4 h-4" />
           </Link>
         </div>
