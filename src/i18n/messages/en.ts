@@ -1,6 +1,6 @@
 export const en = {
   common: {
-    studioName: "AURA DESIGN",
+    studioName: "AURA PROD",
     studioTagline: "Digital experiences built to be seen.",
     location: "Mahdia, Tunisia • 24/7 Studio",
     startProject: "Start a project",
@@ -39,7 +39,7 @@ export const en = {
   hero: {
     badge: "CREATIVE DIGITAL & PRODUCTION STUDIO",
     headline: "Your website should sell before you speak.",
-    subhead: "AURA DESIGN builds production-grade websites, commercial content, brand experiences, and AI-powered digital solutions for ambitious businesses.",
+    subhead: "AURA PROD builds production-grade websites, commercial content, brand experiences, and AI-powered digital solutions for ambitious businesses.",
     ctaPrimary: "Start a project",
     ctaSecondary: "Explore our work",
     metadata: {
@@ -56,7 +56,7 @@ export const en = {
   manifesto: {
     tag: "OUR CONVICTION",
     title: "We build things people notice.",
-    description: "Businesses do not need another generic website. They need an identity and digital presence that people remember. AURA DESIGN combines strategy, design, technology, photography, video production, motion, and AI into one seamless creative workflow. Every project is treated as a complete digital product rather than a collection of disconnected deliverables.",
+    description: "Businesses do not need another generic website. They need an identity and digital presence that people remember. AURA PROD combines strategy, design, technology, photography, video production, motion, and AI into one seamless creative workflow. Every project is treated as a complete digital product rather than a collection of disconnected deliverables.",
     quote: "“Your website should sell before you speak. Built for attention. Designed for conversion.”",
   },
   services: {
@@ -106,7 +106,7 @@ export const en = {
     title: "Flagship concept studies and demonstration benchmarks.",
     subtitle: "Every showcase demonstrates how we combine creative direction, cinema-grade filming, and custom software engineering.",
     badge: "STUDIO CONCEPTS",
-    notice: "These flagship case studies are benchmark concepts developed by AURA DESIGN to demonstrate full-spectrum web, video, and digital capabilities.",
+    notice: "These flagship case studies are benchmark concepts developed by AURA PROD to demonstrate full-spectrum web, video, and digital capabilities.",
     items: [
       {
         slug: "mirador",
@@ -425,7 +425,7 @@ export const en = {
     directWhatsApp: "Need an immediate conversation? Reach us directly on WhatsApp:",
     studioAddress: "Headquarters: Mahdia, Tunisia (5111)",
     phone: "+216 55 689 162",
-    email: "hello@aura-design.tech",
+    email: "hello@aura-prod.tech",
     steps: {
       step1: {
         title: "1. What is your industry?",
@@ -486,17 +486,17 @@ export const en = {
     },
     thankYou: {
       title: "Inquiry successfully received.",
-      subtitle: "Thank you for reaching out to AURA DESIGN. Our team is reviewing your project details and will be in touch within 24 hours.",
+      subtitle: "Thank you for reaching out to AURA PROD. Our team is reviewing your project details and will be in touch within 24 hours.",
       whatsAppPrompt: "For immediate questions, reach us on WhatsApp:",
       backHome: "Return to Homepage",
     },
   },
   about: {
-    tag: "ABOUT AURA DESIGN",
+    tag: "ABOUT AURA PROD",
     title: "We build things people notice.",
     subtitle: "A modern creative digital agency combining web development, visual content production, branding, motion, and AI.",
     philosophyTitle: "Our Philosophy",
-    philosophyText: "Businesses do not need another generic website. They need an identity and digital presence that people remember. AURA DESIGN exists to bridge the gap between high-level creative production and advanced technology. We treat every project as a complete digital product—from strategic positioning and brand direction to real-world commercial filming, custom Next.js development, and production deployment.",
+    philosophyText: "Businesses do not need another generic website. They need an identity and digital presence that people remember. AURA PROD exists to bridge the gap between high-level creative production and advanced technology. We treat every project as a complete digital product—from strategic positioning and brand direction to real-world commercial filming, custom Next.js development, and production deployment.",
     stats: [
       { value: "100%", label: "Bespoke Architecture" },
       { value: "4K UHD", label: "Commercial Cinema Standard" },
@@ -528,6 +528,6 @@ export const en = {
     privacy: "Privacy Policy",
     terms: "Terms of Service",
     rights: "All rights reserved.",
-    craftedWith: "Crafted & engineered with precision by AURA DESIGN.",
+    craftedWith: "Crafted & engineered with precision by AURA PROD.",
   },
 };

@@ -1,6 +1,6 @@
-# AURA DESIGN — Digital Experiences, Content & AI
+# AURA PROD — Digital Experiences, Content & AI
 > **Web. Content. AI. Built for brands that want to stand out.**  
-> Official Platform: [https://aura-design.tech](https://aura-design.tech)
+> Official Platform: [https://aura-prod.tech](https://aura-prod.tech)
 
 [![CI Pipeline](https://github.com/zied1fatnassi/atelier-ora/actions/workflows/ci.yml/badge.svg)](https://github.com/zied1fatnassi/atelier-ora/actions)
 [![Next.js 16](https://img.shields.io/badge/Next.js-16.3.8-black?style=flat&logo=next.js)](https://nextjs.org/)
@@ -12,7 +12,7 @@
 
 ## ✦ Overview
 
-**AURA DESIGN** (`أورا ديزاين`) is a creative digital agency that combines web development, visual content production, branding, motion, and AI to help businesses present themselves at a higher level and turn attention into business.
+**AURA PROD** (`أورا برود`) is a creative digital agency that combines web development, visual content production, branding, motion, and AI to help businesses present themselves at a higher level and turn attention into business.
 
 We combine strategy, design, technology, photography, video production, motion, and AI into one creative workflow to build complete digital experiences for **boutique hotels, premier restaurants & cafés, gyms & fitness sanctuaries, luxury brands, real estate firms, and high-growth businesses**.
 
@@ -57,7 +57,7 @@ Built natively on Next.js App Router i18n routing (`/[locale]/...`):
 - **Surface Elevation:** `#0d0d12` / `#14141c`
 - **Brand Accent:** Solar Amber `#f59e0b` (Cinematic warmth & creative authority)
 - **Typography:** Syne (Display), Plus Jakarta Sans (Body), Cairo (Arabic RTL)
-- **Accessibility:** WCAG 2.2 AA compliant with real-time `prefers-reduced-motion` detection and user overrides (`aura-design-reduced-motion`).
+- **Accessibility:** WCAG 2.2 AA compliant with real-time `prefers-reduced-motion` detection and user overrides (`aura-prod-reduced-motion`).
 
 ---
 
@@ -105,16 +105,17 @@ npm run start
 
 ## ✦ Studio Coordinates & Contact
 
-- **Platform URL:** [https://aura-design.tech](https://aura-design.tech)
+- **Platform URL:** [https://aura-prod.tech](https://aura-prod.tech)
 - **Headquarters:** Mahdia, Tunisia (5111)
 - **Timezone:** Africa/Tunis (Operating 24/7)
 - **Phone / WhatsApp:** [+216 55 689 162](https://wa.me/21655689162)
-- **General Inquiries:** [hello@aura-design.tech](mailto:hello@aura-design.tech)
-- **Project Proposals:** [projects@aura-design.tech](mailto:projects@aura-design.tech)
-- **Client Support:** [support@aura-design.tech](mailto:support@aura-design.tech)
-- **Data Privacy Office:** [privacy@aura-design.tech](mailto:privacy@aura-design.tech)
+- **General Inquiries:** [hello@aura-prod.tech](mailto:hello@aura-prod.tech)
+- **Project Proposals:** [projects@aura-prod.tech](mailto:projects@aura-prod.tech)
+- **Client Support:** [support@aura-prod.tech](mailto:support@aura-prod.tech)
+- **Data Privacy Office:** [privacy@aura-prod.tech](mailto:privacy@aura-prod.tech)
 
 ---
 
-© 2026 Aura design. All rights reserved.
+© 2026 Aura prod. All rights reserved.
+
 

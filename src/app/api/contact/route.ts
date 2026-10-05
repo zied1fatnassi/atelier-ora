@@ -50,7 +50,7 @@ export async function POST(req: Request) {
     console.log("Lead Payload:", JSON.stringify(lead, null, 2));
 
     // Optional environment-driven integrations (e.g. Resend / Webhook)
-    // If RESEND_API_KEY is configured in Vercel, send notification to projects@aura-design.tech
+    // If RESEND_API_KEY is configured in Vercel, send notification to projects@aura-prod.tech
     const resendApiKey = process.env.RESEND_API_KEY;
     if (resendApiKey) {
       try {
@@ -61,7 +61,7 @@ export async function POST(req: Request) {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            from: `AURA DESIGN Inquiries <${siteConfig.emails.general}>`,
+            from: `AURA PROD Inquiries <${siteConfig.emails.general}>`,
             to: [siteConfig.emails.projects],
             reply_to: lead.email,
             subject: `New Project Inquiry: ${lead.businessName} (${lead.fullName})`,

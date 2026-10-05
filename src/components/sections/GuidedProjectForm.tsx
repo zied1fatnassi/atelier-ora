@@ -53,7 +53,7 @@ export function GuidedProjectForm({ locale, dict }: GuidedProjectFormProps) {
   // Restore partial progress from localStorage
   useEffect(() => {
     try {
-      const saved = localStorage.getItem("aura-design-form-progress");
+      const saved = localStorage.getItem("aura-prod-form-progress") || localStorage.getItem("aura-design-form-progress");
       if (saved) {
         setFormData(JSON.parse(saved));
       }
@@ -65,7 +65,7 @@ export function GuidedProjectForm({ locale, dict }: GuidedProjectFormProps) {
   // Save partial progress
   useEffect(() => {
     try {
-      localStorage.setItem("aura-design-form-progress", JSON.stringify(formData));
+      localStorage.setItem("aura-prod-form-progress", JSON.stringify(formData));
     } catch {
       // ignore
     }
@@ -112,6 +112,7 @@ export function GuidedProjectForm({ locale, dict }: GuidedProjectFormProps) {
 
       if (res.ok) {
         setSubmitted(true);
+        localStorage.removeItem("aura-prod-form-progress");
         localStorage.removeItem("aura-design-form-progress");
       }
     } catch {
@@ -388,10 +389,10 @@ export function GuidedProjectForm({ locale, dict }: GuidedProjectFormProps) {
               />
               <label htmlFor="consent-checkbox" className="text-xs text-white/60 leading-relaxed cursor-pointer">
                 {locale === "fr"
-                  ? "J'accepte que AURA DESIGN traite mes coordonnées pour me recontacter concernant ce projet conformément à la Politique de Confidentialité."
+                  ? "J'accepte que AURA PROD traite mes coordonnées pour me recontacter concernant ce projet conformément à la Politique de Confidentialité."
                   : locale === "ar"
-                  ? "أوافق على معالجة AURA DESIGN لبيانات الاتصال للرد بخصوص هذا المشروع وفقاً لسياسة الخصوصية."
-                  : "I consent to AURA DESIGN processing my contact details to reply regarding this project inquiry in accordance with the Privacy Policy."}
+                  ? "أوافق على معالجة AURA PROD لبيانات الاتصال للرد بخصوص هذا المشروع وفقاً لسياسة الخصوصية."
+                  : "I consent to AURA PROD processing my contact details to reply regarding this project inquiry in accordance with the Privacy Policy."}
               </label>
             </div>
           </div>

@@ -1,11 +1,14 @@
 import React from "react";
+import Image from "next/image";
 import { siteConfig } from "@/config/site";
+import { cn } from "@/lib/utils";
 
 interface AuraLogoProps {
   className?: string;
   variant?: "full" | "compact" | "mark";
   theme?: "dark" | "light" | "monochrome";
   size?: "sm" | "md" | "lg";
+  priority?: boolean;
 }
 
 export function AuraLogo({
@@ -13,109 +16,67 @@ export function AuraLogo({
   variant = "full",
   theme = "dark",
   size = "md",
+  priority = true,
 }: AuraLogoProps) {
   const isLight = theme === "light";
   const isMono = theme === "monochrome";
 
-  const textColor = isMono
-    ? isLight
-      ? "text-black"
-      : "text-white"
-    : isLight
-    ? "text-zinc-900"
-    : "text-[#f8f8fa]";
+  // Pick appropriate logo asset:
+  // For dark backgrounds (default), use the dark-optimized logo where 'Prod' is crisp white
+  // For light backgrounds, use the original logo where 'Prod' is dark
+  const logoSrc = isLight
+    ? "/brand/aura-prod-logo.png"
+    : "/brand/aura-prod-logo-dark.png";
 
-  const accentFill = isMono ? (isLight ? "#000000" : "#ffffff") : siteConfig.accentColor;
+  const markSrc = "/brand/icon-192.png";
 
-  const markSize =
-    size === "sm" ? "w-6 h-6" : size === "lg" ? "w-10 h-10" : "w-8 h-8";
+  const dimensions = {
+    sm: { width: 62, height: 32, mark: 26 },
+    md: { width: 80, height: 42, mark: 32 },
+    lg: { width: 110, height: 58, mark: 44 },
+  }[size];
 
-  const textSize =
-    size === "sm"
-      ? "text-sm tracking-[0.2em]"
-      : size === "lg"
-      ? "text-2xl tracking-[0.25em]"
-      : "text-lg tracking-[0.22em]";
-
-  const subtextSize =
-    size === "sm"
-      ? "text-[9px] tracking-[0.3em]"
-      : size === "lg"
-      ? "text-[12px] tracking-[0.35em]"
-      : "text-[10px] tracking-[0.32em]";
+  if (variant === "mark") {
+    return (
+      <div
+        className={cn(
+          "relative inline-flex items-center justify-center shrink-0 rounded-lg overflow-hidden select-none transition-transform duration-300 hover:scale-105",
+          className
+        )}
+        style={{ width: dimensions.mark, height: dimensions.mark }}
+        aria-label={`${siteConfig.name} Logomark`}
+      >
+        <Image
+          src={markSrc}
+          alt={`${siteConfig.name} Logomark`}
+          width={dimensions.mark}
+          height={dimensions.mark}
+          className="w-full h-full object-contain rounded-lg"
+          priority={priority}
+        />
+      </div>
+    );
+  }
 
   return (
-    <div className={`inline-flex items-center gap-3 select-none ${className}`}>
-      {/* Precision Geometric Logomark (Aperture / A-Monogram) */}
-      <svg
-        className={`${markSize} shrink-0 transition-transform duration-300 hover:scale-105`}
-        viewBox="0 0 40 40"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-label="AURA DESIGN Logomark"
-      >
-        {/* Outer Frame Hex-Cut */}
-        <path
-          d="M20 2L36 11V29L20 38L4 29V11L20 2Z"
-          stroke={isLight ? "#18181b" : "#ffffff"}
-          strokeWidth="1.75"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="opacity-90"
-        />
-        {/* Modernist Architectural 'A' Apex */}
-        <path
-          d="M20 7L28 27H12L20 7Z"
-          stroke={isLight ? "#27272a" : "#e4e4e7"}
-          strokeWidth="1.5"
-          strokeLinejoin="round"
-        />
-        {/* Horizontal Prism Crossbar */}
-        <line
-          x1="14"
-          y1="22"
-          x2="26"
-          y2="22"
-          stroke={isLight ? "#27272a" : "#e4e4e7"}
-          strokeWidth="1.5"
-        />
-        {/* Signature Solar Amber Focal Prism Core */}
-        <circle cx="20" cy="16" r="2.5" fill={accentFill} />
-        <circle
-          cx="20"
-          cy="16"
-          r="4.5"
-          stroke={accentFill}
-          strokeWidth="0.75"
-          strokeOpacity="0.4"
-        />
-      </svg>
-
-      {/* Typography Elements */}
-      {variant !== "mark" && (
-        <div className="flex flex-col leading-none">
-          <div className="flex items-center gap-1.5">
-            <span
-              className={`font-display font-extrabold uppercase ${textColor} ${textSize}`}
-            >
-              AURA
-            </span>
-            {variant === "full" && (
-              <span
-                className={`font-sans font-light uppercase opacity-80 ${textColor} ${subtextSize} self-center mt-0.5`}
-              >
-                DESIGN
-              </span>
-            )}
-            {!isMono && (
-              <span
-                className="w-1.5 h-1.5 rounded-full inline-block mb-1"
-                style={{ backgroundColor: accentFill }}
-              />
-            )}
-          </div>
-        </div>
+    <div
+      className={cn(
+        "relative inline-flex items-center select-none transition-transform duration-300 hover:scale-[1.02]",
+        isMono && (isLight ? "filter grayscale brightness-0" : "filter grayscale brightness-200"),
+        className
       )}
+      style={{ width: dimensions.width, height: dimensions.height }}
+      aria-label={`${siteConfig.name} Logo`}
+    >
+      <Image
+        src={logoSrc}
+        alt={`${siteConfig.name} Logo`}
+        width={785}
+        height={410}
+        priority={priority}
+        className="w-full h-full object-contain"
+      />
     </div>
   );
 }
+

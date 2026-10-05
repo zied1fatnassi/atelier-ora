@@ -16,7 +16,7 @@ export function CookieConsent({ dict }: CookieConsentProps) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const consent = localStorage.getItem("aura-design-cookie-consent");
+    const consent = localStorage.getItem("aura-prod-cookie-consent") || localStorage.getItem("aura-design-cookie-consent");
     if (!consent) {
       const timer = setTimeout(() => setVisible(true), 1200);
       return () => clearTimeout(timer);
@@ -24,12 +24,12 @@ export function CookieConsent({ dict }: CookieConsentProps) {
   }, []);
 
   const handleAccept = () => {
-    localStorage.setItem("aura-design-cookie-consent", "granted");
+    localStorage.setItem("aura-prod-cookie-consent", "granted");
     setVisible(false);
   };
 
   const handleDecline = () => {
-    localStorage.setItem("aura-design-cookie-consent", "declined");
+    localStorage.setItem("aura-prod-cookie-consent", "declined");
     setVisible(false);
   };
 

@@ -1,25 +1,25 @@
 /**
- * AURA DESIGN — Central Platform Configuration
+ * AURA PROD — Central Platform Configuration
  * Single Source of Truth for brand identity, contact info, domains, SEO, and services.
  * All customer-facing and organizational data references this file.
  */
 
 export const siteConfig = {
   // Brand Identity
-  name: "AURA DESIGN",
+  name: "AURA PROD",
   shortName: "AURA",
-  legalName: process.env.NEXT_PUBLIC_LEGAL_ENTITY_NAME || "Aura design",
+  legalName: process.env.NEXT_PUBLIC_LEGAL_ENTITY_NAME || "Aura prod",
   tagline: "Digital experiences built to be seen.",
   supportingTagline: "Web. Content. AI. Built for brands that want to stand out.",
   mission:
-    "AURA DESIGN is a creative digital agency that combines web development, visual content production, branding, motion, and AI to help businesses present themselves at a higher level and turn attention into business.",
+    "AURA PROD is a creative digital agency that combines web development, visual content production, branding, motion, and AI to help businesses present themselves at a higher level and turn attention into business.",
   valueProposition:
     "We combine strategy, design, technology, photography, video production, motion, and AI into one creative workflow to build complete digital experiences.",
   aboutQuote: "We build things people notice.",
   
   // Domains & URLs
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://aura-design.tech",
-  domain: "aura-design.tech",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://aura-prod.tech",
+  domain: "aura-prod.tech",
   
   // Design Tokens
   accentColor: "#f59e0b", // Solar Amber — Cinematic studio warmth and premium commercial film feel
@@ -29,16 +29,16 @@ export const siteConfig = {
   registrationNumber: process.env.NEXT_PUBLIC_COMPANY_REG_NUMBER || null,
   vatId: process.env.NEXT_PUBLIC_VAT_ID || null,
   fiscalCode: process.env.NEXT_PUBLIC_FISCAL_CODE || null,
-  dataController: process.env.NEXT_PUBLIC_DATA_CONTROLLER || "Aura design Data Privacy Office",
+  dataController: process.env.NEXT_PUBLIC_DATA_CONTROLLER || "Aura prod Data Privacy Office",
   
   // Inquiries & Departmental Inboxes
   emails: {
-    general: "hello@aura-design.tech",
-    projects: "projects@aura-design.tech",
-    support: "support@aura-design.tech",
-    careers: "admin@aura-design.tech",
-    press: "contact@aura-design.tech",
-    privacy: "privacy@aura-design.tech",
+    general: "hello@aura-prod.tech",
+    projects: "projects@aura-prod.tech",
+    support: "support@aura-prod.tech",
+    careers: "admin@aura-prod.tech",
+    press: "contact@aura-prod.tech",
+    privacy: "privacy@aura-prod.tech",
   },
   
   // Phone & Instant Messaging
@@ -181,10 +181,10 @@ export const siteConfig = {
   
   // SEO Metadata
   seo: {
-    defaultTitle: "AURA DESIGN — Digital Experiences, Content & AI",
-    titleTemplate: "%s — AURA DESIGN",
+    defaultTitle: "AURA PROD — Digital Experiences, Content & AI",
+    titleTemplate: "%s — AURA PROD",
     defaultDescription:
-      "AURA DESIGN builds production-grade websites, commercial content, brand experiences, and AI-powered digital solutions for ambitious businesses.",
+      "AURA PROD builds production-grade websites, commercial content, brand experiences, and AI-powered digital solutions for ambitious businesses.",
     keywords: [
       "Creative digital agency Tunisia",
       "Web design Tunisia",
@@ -208,11 +208,11 @@ export const siteConfig = {
     openGraph: {
       type: "website",
       locale: "en_US",
-      siteName: "AURA DESIGN",
+      siteName: "AURA PROD",
     },
     twitter: {
       card: "summary_large_image",
-      creator: "@auradesign",
+      creator: "@auraprod",
     },
   },
 } as const;

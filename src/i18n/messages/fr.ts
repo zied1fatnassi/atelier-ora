@@ -1,6 +1,6 @@
 export const fr = {
   common: {
-    studioName: "AURA DESIGN",
+    studioName: "AURA PROD",
     studioTagline: "Des expériences digitales conçues pour marquer les esprits.",
     location: "Mahdia, Tunisie • Studio 24/7",
     startProject: "Lancer un projet",
@@ -39,7 +39,7 @@ export const fr = {
   hero: {
     badge: "STUDIO CRÉATIF DIGITAL & PRODUCTION COMMERCIALE",
     headline: "Votre site web doit vendre avant même que vous ne parliez.",
-    subhead: "AURA DESIGN conçoit des plateformes web de haut niveau, du contenu commercial cinématographique, des identités de marque fortes et des solutions digitales propulsées par l'IA.",
+    subhead: "AURA PROD conçoit des plateformes web de haut niveau, du contenu commercial cinématographique, des identités de marque fortes et des solutions digitales propulsées par l'IA.",
     ctaPrimary: "Lancer un projet",
     ctaSecondary: "Explorer nos réalisations",
     metadata: {
@@ -56,7 +56,7 @@ export const fr = {
   manifesto: {
     tag: "NOTRE CONVICTION",
     title: "Nous créons ce que les gens remarquent.",
-    description: "Les entreprises n'ont pas besoin d'un énième site web générique. Elles ont besoin d'une identité et d'une présence digitale dont on se souvient. AURA DESIGN réunit stratégie, design, technologie, photographie, production vidéo, motion et IA au sein d'un flux créatif unifié. Chaque projet est abordé comme un produit digital complet.",
+    description: "Les entreprises n'ont pas besoin d'un énième site web générique. Elles ont besoin d'une identité et d'une présence digitale dont on se souvient. AURA PROD réunit stratégie, design, technologie, photographie, production vidéo, motion et IA au sein d'un flux créatif unifié. Chaque projet est abordé comme un produit digital complet.",
     quote: "« Votre site web doit vendre avant même que vous ne parliez. Conçu pour capter l'attention. Taillé pour convertir. »",
   },
   services: {
@@ -106,7 +106,7 @@ export const fr = {
     title: "Études de concepts phares et démonstrateurs de référence.",
     subtitle: "Chaque vitrine illustre l'alliance entre direction artistique, tournage cinéma et développement logiciel sur-mesure.",
     badge: "CONCEPTS STUDIO",
-    notice: "Ces études de cas sont des concepts de référence développés par AURA DESIGN pour démontrer l'étendue de nos capacités web, vidéo et digitales.",
+    notice: "Ces études de cas sont des concepts de référence développés par AURA PROD pour démontrer l'étendue de nos capacités web, vidéo et digitales.",
     items: [
       {
         slug: "mirador",
@@ -425,7 +425,7 @@ export const fr = {
     directWhatsApp: "Besoin d'un échange immédiat ? Contactez-nous directement sur WhatsApp :",
     studioAddress: "Siège : Mahdia, Tunisie (5111)",
     phone: "+216 55 689 162",
-    email: "hello@aura-design.tech",
+    email: "hello@aura-prod.tech",
     steps: {
       step1: {
         title: "1. Quel est votre secteur d'activité ?",
@@ -486,17 +486,17 @@ export const fr = {
     },
     thankYou: {
       title: "Demande reçue avec succès.",
-      subtitle: "Merci d'avoir contacté AURA DESIGN. Notre équipe étudie vos éléments et reviendra vers vous sous 24 heures.",
+      subtitle: "Merci d'avoir contacté AURA PROD. Notre équipe étudie vos éléments et reviendra vers vous sous 24 heures.",
       whatsAppPrompt: "Pour une question immédiate, écrivez-nous sur WhatsApp :",
       backHome: "Retour à l'accueil",
     },
   },
   about: {
-    tag: "À PROPOS D'AURA DESIGN",
+    tag: "À PROPOS D'AURA PROD",
     title: "Nous créons ce que les gens remarquent.",
     subtitle: "Une agence digitale créative moderne combinant développement web, production audiovisuelle, branding, motion et IA.",
     philosophyTitle: "Notre Philosophie",
-    philosophyText: "Les entreprises n'ont pas besoin d'un énième site web générique. Elles ont besoin d'une identité et d'une présence digitale dont on se souvient. AURA DESIGN a été fondée pour combler le fossé entre la haute création visuelle et la technologie logicielle avancée. Nous traitons chaque projet comme un produit digital global—du positionnement stratégique au tournage commercial sur le terrain, jusqu'au développement Next.js sur-mesure et à la mise en ligne.",
+    philosophyText: "Les entreprises n'ont pas besoin d'un énième site web générique. Elles ont besoin d'une identité et d'une présence digitale dont on se souvient. AURA PROD a été fondée pour combler le fossé entre la haute création visuelle et la technologie logicielle avancée. Nous traitons chaque projet comme un produit digital global—du positionnement stratégique au tournage commercial sur le terrain, jusqu'au développement Next.js sur-mesure et à la mise en ligne.",
     stats: [
       { value: "100%", label: "Architecture Sur-Mesure" },
       { value: "4K UHD", label: "Standard Cinéma Commercial" },
@@ -528,6 +528,6 @@ export const fr = {
     privacy: "Politique de Confidentialité",
     terms: "Conditions d'Utilisation",
     rights: "Tous droits réservés.",
-    craftedWith: "Conçu et développé avec rigueur par AURA DESIGN.",
+    craftedWith: "Conçu et développé avec rigueur par AURA PROD.",
   },
 };

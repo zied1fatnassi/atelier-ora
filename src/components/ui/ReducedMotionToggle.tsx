@@ -20,7 +20,7 @@ export function ReducedMotionToggle({
 
   useEffect(() => {
     setMounted(true);
-    const stored = localStorage.getItem("aura-design-reduced-motion");
+    const stored = localStorage.getItem("aura-prod-reduced-motion") || localStorage.getItem("aura-design-reduced-motion");
     if (stored === "true") {
       setReduced(true);
       document.documentElement.setAttribute("data-reduced-motion", "true");
@@ -38,10 +38,10 @@ export function ReducedMotionToggle({
     setReduced(next);
     if (next) {
       document.documentElement.setAttribute("data-reduced-motion", "true");
-      localStorage.setItem("aura-design-reduced-motion", "true");
+      localStorage.setItem("aura-prod-reduced-motion", "true");
     } else {
       document.documentElement.removeAttribute("data-reduced-motion");
-      localStorage.setItem("aura-design-reduced-motion", "false");
+      localStorage.setItem("aura-prod-reduced-motion", "false");
     }
   };
 

@@ -22,7 +22,7 @@ export default async function PricingPage({ params }: PricingPageProps) {
   const faqs = isArabic
     ? [
         {
-          q: "كيف يتم تحديد تكلفة ونطاق المشروع في AURA DESIGN؟",
+          q: "كيف يتم تحديد تكلفة ونطاق المشروع في AURA PROD؟",
           a: "كل منشأة أو علامة تجارية تتطلب مواصفات دقيقة: من عدد صفحات المنصة ونوع التفاعل المطلوب، إلى أيام التصوير السينمائي بالموقع ومتطلبات اللغات. نبدأ بجلسة اكتشاف استراتيجية لتقديم مقترح واضح ومفصل قبل البدء بأي خطوة إنتاجية.",
         },
         {
@@ -45,7 +45,7 @@ export default async function PricingPage({ params }: PricingPageProps) {
     : isFrench
     ? [
         {
-          q: "Comment est déterminé le devis d'un projet chez AURA DESIGN ?",
+          q: "Comment est déterminé le devis d'un projet chez AURA PROD ?",
           a: "Chaque établissement possède ses propres exigences : du nombre de pages et d'interactions sur-mesure au temps de tournage vidéo 4K sur site et à la configuration multilingue. Nous débutons toujours par un cadrage précis pour vous soumettre une proposition claire et définitive.",
         },
         {
@@ -67,7 +67,7 @@ export default async function PricingPage({ params }: PricingPageProps) {
       ]
     : [
         {
-          q: "How does AURA DESIGN scope and structure project proposals?",
+          q: "How does AURA PROD scope and structure project proposals?",
           a: "Every brand has unique technical and visual requirements: from custom web pages and interactions to on-location cinema shoot days and multilingual architectures. We conduct a discovery session to deliver a transparent, fixed-scope proposal before production begins.",
         },
         {
