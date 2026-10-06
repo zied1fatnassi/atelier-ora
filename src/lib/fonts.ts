@@ -1,4 +1,4 @@
-import { Syne, Plus_Jakarta_Sans, Cairo } from "next/font/google";
+import { Syne, Plus_Jakarta_Sans, Cairo, JetBrains_Mono } from "next/font/google";
 
 export const fontDisplay = Syne({
   subsets: ["latin"],
@@ -12,6 +12,13 @@ export const fontSans = Plus_Jakarta_Sans({
   variable: "--font-sans",
   display: "swap",
   weight: ["300", "400", "500", "600", "700"],
+});
+
+export const fontMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+  weight: ["400", "500", "600"],
 });
 
 export const fontArabic = Cairo({

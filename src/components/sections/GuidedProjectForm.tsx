@@ -53,7 +53,7 @@ export function GuidedProjectForm({ locale, dict }: GuidedProjectFormProps) {
   // Restore partial progress from localStorage
   useEffect(() => {
     try {
-      const saved = localStorage.getItem("aura-prod-form-progress") || localStorage.getItem("aura-design-form-progress");
+      const saved = localStorage.getItem("aura-prod-form-progress");
       if (saved) {
         setFormData(JSON.parse(saved));
       }
@@ -113,7 +113,6 @@ export function GuidedProjectForm({ locale, dict }: GuidedProjectFormProps) {
       if (res.ok) {
         setSubmitted(true);
         localStorage.removeItem("aura-prod-form-progress");
-        localStorage.removeItem("aura-design-form-progress");
       }
     } catch {
       // Fallback

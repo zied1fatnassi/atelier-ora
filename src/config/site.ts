@@ -8,7 +8,7 @@ export const siteConfig = {
   // Brand Identity
   name: "AURA PROD",
   shortName: "AURA",
-  legalName: process.env.NEXT_PUBLIC_LEGAL_ENTITY_NAME || "Aura prod",
+  legalName: process.env.NEXT_PUBLIC_LEGAL_ENTITY_NAME || "Aura Prod",
   tagline: "Digital experiences built to be seen.",
   supportingTagline: "Web. Content. AI. Built for brands that want to stand out.",
   mission:
@@ -29,7 +29,7 @@ export const siteConfig = {
   registrationNumber: process.env.NEXT_PUBLIC_COMPANY_REG_NUMBER || null,
   vatId: process.env.NEXT_PUBLIC_VAT_ID || null,
   fiscalCode: process.env.NEXT_PUBLIC_FISCAL_CODE || null,
-  dataController: process.env.NEXT_PUBLIC_DATA_CONTROLLER || "Aura prod Data Privacy Office",
+  dataController: process.env.NEXT_PUBLIC_DATA_CONTROLLER || "Aura Prod Data Privacy Office",
   
   // Inquiries & Departmental Inboxes
   emails: {

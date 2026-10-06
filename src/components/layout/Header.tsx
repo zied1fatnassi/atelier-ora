@@ -64,10 +64,15 @@ export function Header({ locale, dict }: HeaderProps) {
           {/* Brand Logo */}
           <Link
             href={`/${locale}`}
-            className="group flex items-center outline-none focus-visible:ring-2 focus-visible:ring-amber-500 rounded-lg p-1 transition-opacity hover:opacity-90"
+            className="group flex items-center outline-none focus-visible:ring-2 focus-visible:ring-amber-500 rounded-lg p-1 transition-opacity hover:opacity-95"
             aria-label={`${dict.common.studioName} — ${dict.common.studioTagline}`}
           >
-            <AuraLogo variant="full" size="md" />
+            <span className="sm:hidden flex items-center">
+              <AuraLogo variant="compact" size="sm" />
+            </span>
+            <span className="hidden sm:inline-flex items-center">
+              <AuraLogo variant="full" size="md" />
+            </span>
           </Link>
 
           {/* Desktop Navigation Links */}
@@ -140,11 +145,14 @@ export function Header({ locale, dict }: HeaderProps) {
           aria-label="Menu mobile"
         >
           <div className="flex items-center justify-between pb-6 border-b border-white/10 mb-6">
-            <LanguageSwitcher currentLocale={locale} />
-            <ReducedMotionToggle
-              labelReduce={dict.common.reducedMotion}
-              labelStandard={dict.common.reducedMotionActive}
-            />
+            <AuraLogo variant="horizontal" size="sm" />
+            <div className="flex items-center gap-2">
+              <LanguageSwitcher currentLocale={locale} />
+              <ReducedMotionToggle
+                labelReduce={dict.common.reducedMotion}
+                labelStandard={dict.common.reducedMotionActive}
+              />
+            </div>
           </div>
 
           <nav className="flex flex-col gap-3 my-auto">

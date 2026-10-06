@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { SUPPORTED_LOCALES, Locale, isValidLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
-import { fontDisplay, fontSans, fontArabic } from "@/lib/fonts";
+import { fontDisplay, fontSans, fontArabic, fontMono } from "@/lib/fonts";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CustomCursor } from "@/components/ui/CustomCursor";
@@ -171,7 +171,7 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       dir={isRtl ? "rtl" : "ltr"}
-      className={`${fontDisplay.variable} ${fontSans.variable} ${fontArabic.variable} h-full antialiased`}
+      className={`${fontDisplay.variable} ${fontSans.variable} ${fontMono.variable} ${fontArabic.variable} h-full antialiased`}
     >
       <head>
         <script

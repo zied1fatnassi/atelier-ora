@@ -53,11 +53,14 @@ export function Footer({ locale, dict }: FooterProps) {
         {/* Top Studio Statement */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-white/10">
           <div className="lg:col-span-7 space-y-6">
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-amber-500" />
-              <span className="font-mono text-xs tracking-widest text-amber-400 uppercase">
-                {dict.common.statusAvailable}
-              </span>
+            <div className="flex flex-wrap items-center gap-4">
+              <AuraLogo variant="horizontal" size="sm" />
+              <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10">
+                <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
+                <span className="font-mono text-xs tracking-widest text-amber-400 uppercase">
+                  {dict.common.statusAvailable}
+                </span>
+              </div>
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-semibold tracking-tight leading-tight max-w-2xl">
               {dict.footer.tagline}

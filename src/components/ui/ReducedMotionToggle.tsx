@@ -20,7 +20,7 @@ export function ReducedMotionToggle({
 
   useEffect(() => {
     setMounted(true);
-    const stored = localStorage.getItem("aura-prod-reduced-motion") || localStorage.getItem("aura-design-reduced-motion");
+    const stored = localStorage.getItem("aura-prod-reduced-motion");
     if (stored === "true") {
       setReduced(true);
       document.documentElement.setAttribute("data-reduced-motion", "true");

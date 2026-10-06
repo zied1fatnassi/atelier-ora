@@ -40,6 +40,10 @@
     letter-spacing: normal;
   }
 
+  code, kbd, samp, pre, .font-mono {
+    font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+
   ::selection {
     background-color: #f59e0b;
     color: #000000;
@@ -71,17 +75,37 @@
 }
 
 .glass-panel-elevated {
-  background: var(--bg-glass-hover);
+  background: var(--bg-glass-elevated);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border-medium);
 }
 
-/* Technical HUD badge */
+/* Technical HUD badge (Cinematic camera readout) */
 .tech-tag {
-  font-family: monospace;
+  font-family: var(--font-mono), monospace;
   font-size: 0.72rem;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-tertiary);
+}
+
+/* Logo Clear Space Container System */
+.aura-logo-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  position: relative;
+  line-height: 1;
+  vertical-align: middle;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+}
+
+.aura-logo-container:hover {
+  transform: translateY(-0.5px);
+}
+
+.aura-logo-clearspace {
+  padding: 4px;
 }
